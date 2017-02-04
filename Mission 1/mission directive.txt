@@ -1,0 +1,29 @@
+ - A Nomad ship encountered what is believed to be an Earth Empire Outpost. Gather intel about the current state of the Earth Empire and try to establish diplomatic relations.
+what actually happens: UEF commander wants to confiscate the Nomad ship and quarantine/detain the crew. Defend yourself.
+Final goal: Gather intel about the current state of the galaxy.
+Objective 1:
+- You, as the Commander of the Nomads 12th expeditionary fleet have been placed in-charge of the command ship and have landed it on the planet. Using our engineers, you must construct an outpost and maintain a sustainable income of resources. Establish a base and scout as quickly as possible. 
+- You will contact the Earth Empire to discuss diplomatic relationships. The Nomads are low on resources, so you will only have access to Tech 1 units and buildings. 
+
+Objective 2: 
+- The Earth Empire Commander is sending a sizeable force to you. Get your engineers back to the ship and counter the Earth Empire's attacks!
+    - Send 2/3 transports to attack the Nomads
+    - Possibly send 2 UEF transports to the Command Centre
+- You must defend the landed Command ship at all costs.
+- You will start with Tech 1 (Heavy Air Play)
+
+Objective 3:
+- It's time to figure out what the hell is happening. Capture the Earth Empire Command Center and gather information about the current state of the galaxy. Our Tech's will try 
+to obtain Earth Empire tech. 
+- You will gain access to more Tech 1 Land by capturing a UEF Land Factory (Restrict Engineers)
+- (Secondary): Commander, if you have spare resources, assault the Earth Empire power plant. This will deactivate the shields around their main base. 
+- (Secondary): We need a counter measure sir. Construct a Tech 2 Air Factory to gain access to our air strikes. We will send some units to attack a small position, however they will return to the ship if they survive.
+
+Objective 4:
+Our Techs have uncovered the state of the galaxy. The Commander we're fighting is with a faction called the 'UEF'. This changes nothing. 
+- (Secondary): Sir, it's time to go on the offensive. The UEF Commander strained his resources with those attacks and is now rebuilding his army. Take advantage of this break and attack his outposts!
+- Your air support ability will become available over time sir, our planes need time to refuel and rearm. 
+- Attack and kill the UEF Commander with all you have sir, we need to leave as soon as possible!
+
+Defeat:
+- UEF Commander damages the ship to an unrecoverable state. Thus resulting in an arrest, and you lose the mission.
