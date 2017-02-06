@@ -160,7 +160,8 @@ mount_dir_with_glob(InitFileDir .. '\\..\\gamedata\\', '*_VO.nx2', '/')
 
 hook = {
     '/schook',
-    '/mods/coop/hook'
+    '/mods/coop/hook',
+    '/nomadhook'
 }
 
 
