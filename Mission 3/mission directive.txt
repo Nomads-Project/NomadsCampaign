@@ -1,0 +1,33 @@
+story/objectives/stuff that happens:
+send to save a ship that was shot down by aeon forces
+you are deployed at the crash site of the ship with your acu
+collect a series of crystals to bring the ship back online
+keep aeon forces away from the ship
+each crystal unlocks an additional ability (i.e. airstrike, orbital bombardment, resource generation…)
+
+characters:
+second in command
+chief engineer
+aeon commander
+aeon commander
+
+detailed mission plan:
+map type: ice/snow OR crystalline
+
+Objective 1:
+secure the landing area (destroy the aeon outpost close to the crash site, the aeon attacks on first sight, thinking you are UEF/Cybran special forces)
+secondary 1:
+capture the administrative building to find out about the defenses of the bases in part 2
+
+Objective 2:
+destroy the two defensive bases near the crystal field to prevent them from sending support when you assault the aeon palace and to disrupt their operations
+
+Objective 3:
+The aeon got reinforcements on the far left of your base, take out the north eastern outpost and the larger base (with quantum gate and acu) in the south east.
+secondary: 
+
+
+Objective 4:
+after destruction of the support bases you can now strike at the aeon main base to gather the crystals you need to repair your ship
+secondary: destroy the tempest production site on the top right before it finishes construction
+secondary: 
