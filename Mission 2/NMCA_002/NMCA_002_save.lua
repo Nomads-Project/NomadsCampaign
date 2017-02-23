@@ -15,7 +15,7 @@ Scenario = {
     --[[																				]]--
     Areas = {
         ['AREA_1'] = {
-            ['rectangle'] = RECTANGLE( 512, 512, 2048, 2048),
+            ['rectangle'] = RECTANGLE( 0, 0, 2048, 2048),
         },
     },
     --[[																				]]--
