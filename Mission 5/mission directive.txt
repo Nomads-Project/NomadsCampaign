@@ -1,0 +1,34 @@
+story/objectives/stuff that happens:
+nomads command sends you to meet up with a cybran that broadcasted a message offering an alliance against the seraphim
+the cybran seems to be engaged in a battle against another cybran force (QAI)
+it turns out that the message was a fake from QAI and an attempt to gather nomad technology
+QAI explains that he prevented spreading of the knowledge about nomads after the first encounter with cybrans
+QAI overwrites the loyalty protocols of some t3 units next to the allied cybran acu and kills it
+destroy the (local) QAI mainframe that hacked into your ships computer and blocks the engines and navigation
+
+characters:
+second in command
+chief engineer
+cybran commander (second mission)
+QAI
+
+detailed mission plan:
+map type: lava
+
+Objective 1:
+defend the cybran city and destroy the forward QAI operation base
+
+#QAI takes control over some t3 units that were previously under control of your cybran ally and kills the cybran acu. Now he controls the cybran base and starts assaulting you from there.
+
+Objective 2:
+destroy the cybran operation base and capture the command center
+stop the attacks from the cybran city (either blow it up or capture the network node)
+
+secondary 2:
+capture the network node to find out what happened. After capture, the cybran base stops its operations and becomes idle
+free some aeon (non-order) commander that assists you (builds a small base and attacks QAI)
+
+#the command center was just a ploy to take over the mainframe of the orbital frigate, the crew manages to sabotage the engines to prevent an uncontrolled decend into the atmosphere but cant control it anymore
+
+Objective 3:
+destroy the (local) QAI mainframe to regain control of the ship
