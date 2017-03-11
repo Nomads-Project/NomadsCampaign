@@ -1,7 +1,7 @@
 story/objectives/stuff that happens:
 nomads command sends you to meet up with a cybran that broadcasted a message offering an alliance against the seraphim
 the cybran seems to be engaged in a battle against another cybran force (QAI)
-it turns out that the message was a fake from QAI and an attempt to gather nomad technology
+it turns out that the message was a fake from QAI and an attempt to gather informations about the nomads home region
 QAI explains that he prevented spreading of the knowledge about nomads after the first encounter with cybrans
 QAI overwrites the loyalty protocols of some t3 units next to the allied cybran acu and kills it
 destroy the (local) QAI mainframe that hacked into your ships computer and blocks the engines and navigation
