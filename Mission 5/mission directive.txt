@@ -32,3 +32,6 @@ free some aeon (non-order) commander that assists you (builds a small base and a
 
 Objective 3:
 destroy the (local) QAI mainframe to regain control of the ship
+
+secondary 3:
+clear the landing site (QAI base on the top right) -> orbital drop of a t4 missile tank (not yet available to build)
