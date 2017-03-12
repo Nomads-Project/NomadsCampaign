@@ -179,6 +179,10 @@ end
 function Intro_Mission_2()
 	LOG("TODO")
 	ScenarioFramework.SetPlayableArea('M2_Area', true)
+	
+    for _, player in ScenarioInfo.HumanPlayers do
+        SetAlliance(player, Cybran, 'Ally')
+    end
 	Start_Mission_2()
 end
 
@@ -189,8 +193,8 @@ function Start_Mission_2()
 	ScenarioInfo.M2P1 = Objectives.CategoriesInArea(
 		'primary',                      					-- type
 		'incomplete',                   					-- status
-		'Destroy the UEF Base',    				-- title
-		'Destroy the UEF Base',  			-- description
+		'Destroy the UEF base',    							-- title
+		'Help the Cybran commander destroy the UEF base',  	-- description
 		'kill',                         					-- action
 		{                              						-- target
 			MarkUnits = false,
@@ -216,8 +220,8 @@ function Start_Mission_2()
 	ScenarioInfo.M2S1 = Objectives.CategoriesInArea(
 		'secondary',                      					-- type
 		'incomplete',                   					-- status
-		'Targets of opportunity - Power generators',    				-- title
-		'These power generators are in a poorly defended area',  			-- description
+		'Targets of opportunity - T2 power generators',    	-- title
+		'These power generators are in a poorly defended area destroying them will cripple the production in the UEF base',  			-- description
 		'kill',                         					-- action
 		{                              						-- target
 			MarkUnits = true,
