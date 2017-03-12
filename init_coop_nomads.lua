@@ -1,3 +1,7 @@
+sc_path = ""
+dofile(InitFileDir .. '\\..\\fa_path.lua')
+
+
 local function mount_dir(dir, mountpoint)
     table.insert(path, { dir = dir, mountpoint = mountpoint })
 end
