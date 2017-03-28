@@ -18,7 +18,7 @@ map type: lava
 Objective 1:
 defend the cybran city and destroy the forward QAI operation base
 
-#QAI takes control over some t3 units that were previously under control of your cybran ally and kills the cybran acu. Now he controls the cybran base and starts assaulting you from there.
+#QAI takes control over some t3 units that were previously under control of your cybran ally and kills the cybran acu. Now he controls the cybran base and starts assaulting you from there. (all units move directly to the player base, bypassing the army which is in QAIs first base)
 
 Objective 2:
 destroy the cybran operation base and capture the command center
@@ -35,3 +35,4 @@ destroy the (local) QAI mainframe to regain control of the ship
 
 secondary 3:
 clear the landing site (QAI base on the top right) -> orbital drop of a t4 missile tank (not yet available to build)
+hidden, becomes available when the base is scouted: destroy the QAI arty base on the hill
