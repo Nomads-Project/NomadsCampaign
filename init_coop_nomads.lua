@@ -66,6 +66,7 @@ mount_dir(InitFileDir..'\\..\\gamedata\\lua.nmd', '/')
 mount_dir(InitFileDir..'\\..\\gamedata\\projectiles.nmd', '/')
 mount_dir(InitFileDir..'\\..\\gamedata\\nomads.nmd', '/')
 mount_dir(InitFileDir..'\\..\\gamedata\\loc.nmd', '/')
+mount_dir(InitFileDir..'\\..\\gamedata\\meshes.nmd', '/')
 
 mount_dir(InitFileDir .. '\\..\\gamedata\\*.cop', '/')
 mount_dir(sc_path .. '\\movies', '/movies')
