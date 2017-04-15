@@ -21,7 +21,7 @@ Nomads (TODO)
 Tech Level: Full T1, Partial T2 (start with T2 eco and unlock more units after objectives are complete)
 
 -- Map
-Map Biome: Theta biome
+Map Biome: desert
 Map size: 20x20
 Starting Wrecks: 
 Props: Low
