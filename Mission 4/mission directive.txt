@@ -16,7 +16,7 @@ nomad scientist
 seraphim (distorted)
 
 detailed mission plan:
-map type: Theta biome
+map type: desert
 
 Objective 1:
 secure the landing area and contact the scientists that are broadcasting the emergency signal
