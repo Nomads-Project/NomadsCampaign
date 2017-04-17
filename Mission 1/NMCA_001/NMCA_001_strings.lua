@@ -8,7 +8,7 @@ IntroNIS_Dialogue = {
 UEF_Notice = {
 	{text = "[Parker]: [Heavy Static] Where the hell are you coming from? This is a restriced area! You're under arrest.", vid = 'C03_Berry_M03_0454.sfd', bank = 'NMCA_001', cue = 'NMCA_P_01', faction = 'UEF'},
 	{text = "[Nichols]: I'm picking up a local transmission on planet, he hasn't identified himself nor does he sound friendly.", vid = 'C03_Berry_M03_0454.sfd', bank = 'NMCA_001', cue = 'NMCA_N_23', faction = 'UEF'},
-	{text = "[Parker]: [Heavy Static] Surrender and prepare to be detained.", vid = 'C03_Berry_M03_0454.sfd', bank = 'NMCA_001', cue = 'NMCA_P_07', faction = 'UEF'},
+	{text = "[Parker]: [Heavy Static] Lay down your arms, I'm bringing you in for interrogation!.", vid = 'C03_Berry_M03_0454.sfd', bank = 'NMCA_001', cue = 'NMCA_P_07', faction = 'UEF'},
 	{text = "[Nichols]: We're having trouble recieving their communication, they've mobilized their forces. We need to get our of here, fire up the engines!", vid = 'C03_Berry_M03_0454.sfd', bank = 'NMCA_001', cue = 'NMCA_N_05', faction = 'UEF'},
 	{text = "[Parker]: [Heavy Static] You're not getting away from me!", vid = 'C03_Berry_M03_0454.sfd', bank = 'NMCA_001', cue = 'NMCA_P_02', faction = 'UEF'},
 }
@@ -28,7 +28,7 @@ M1_Tac_Dead = {
 }
 
 UEFOutpost_Dead = {
-	{text = "[Parker]: You think you've beaten me? That outpost meant nothing. This battle is far from over, I will still crush you!", vid = 'C03_Berry_M03_0454.sfd', bank = 'NMCA_001', cue = 'NMCA_P_03', faction = 'UEF'},
+	{text = "[Parker]: You think I'm done with you yet? That outpost meant nothing!", vid = 'C03_Berry_M03_0454.sfd', bank = 'NMCA_001', cue = 'NMCA_P_03', faction = 'UEF'},
 }
 
 M2_Update_Commander = {
@@ -54,7 +54,7 @@ M3_ProtectFactory = {
 
 M3FactoryDead = {
 	{text = "[Nichols]: We've lost the captured factory!", vid = 'C03_Berry_M03_0454.sfd', bank = 'NMCA_001', cue = 'NMCA_N_18', faction = 'UEF'},
-	{text = "[Parker]: There goes your only chance of stopping me! You're next, terrorist.", vid = 'C03_Berry_M03_0454.sfd', bank = 'NMCA_001', cue = 'NMCA_P_04', faction = 'UEF'},
+	{text = "[Parker]: This is only going to get worse. And now you're next!", vid = 'C03_Berry_M03_0454.sfd', bank = 'NMCA_001', cue = 'NMCA_P_04', faction = 'UEF'},
 }
 
 M3ShieldsDead = {
@@ -62,7 +62,7 @@ M3ShieldsDead = {
 }
 
 EnemyDead = {
-	{text = "[Parker]: No! I will not be defea--", vid = 'C03_Berry_M03_0454.sfd', bank = 'NMCA_001', cue = 'NMCA_P_DEAD', faction = 'UEF'},
+	{text = "[Parker]: No! this doesn't end he--", vid = 'C03_Berry_M03_0454.sfd', bank = 'NMCA_001', cue = 'NMCA_P_DEAD', faction = 'UEF'},
 	{text = "[Nichols]: The enemy Commander is down, now we can get out of here.", vid = 'C03_Berry_M03_0454.sfd', bank = 'NMCA_001', cue = 'NMCA_N_19', faction = 'UEF'},
 	{text = "[Technician]: Our engines are operational again. We've finished repairs and are ready to launch.", vid = 'C03_Berry_M03_0454.sfd', bank = 'NMCA_001', cue = 'NMCA_T_2', faction = 'UEF'},
 }
@@ -76,7 +76,11 @@ OrbStrikeReady = {
 }
 
 UEFTauntFactory = {
-	{text = "[Parker]: You really think that'll help you? I'll destroy that factory before you can use it!", vid = 'C03_Berry_M03_0454.sfd', bank = 'NMCA_001', cue = 'NMCA_P_06', faction = 'UEF'},
+	{text = "[Parker]: Oh you aren't getting away with that...I'll bring it down myself!", vid = 'C03_Berry_M03_0454.sfd', bank = 'NMCA_001', cue = 'NMCA_P_06', faction = 'UEF'},
+}
+
+PlayerDefeated = {
+	{text = "[Parker]: You never stood a chance!", vid = 'C03_Berry_M03_0454.sfd', bank = 'NMCA_001', cue = 'ParkerWon', faction = 'UEF'},
 }
 
 ----------
@@ -95,7 +99,7 @@ TAUNT3 = {
 }
 
 TAUNT4 = {
-	{text = "[Parker]: Your resistance is useless. I will destroy you!", vid = 'C03_Berry_M03_0454.sfd', bank = 'NMCA_001', cue = 'UEFTAUNT4', faction = 'UEF'},
+	{text = "[Parker]: Try to resist..Your destruction will be all the richer!", vid = 'C03_Berry_M03_0454.sfd', bank = 'NMCA_001', cue = 'UEFTAUNT4', faction = 'UEF'},
 }
 
 TAUNT5 = {

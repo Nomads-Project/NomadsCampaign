@@ -404,41 +404,46 @@ function M2()
 	-- Objectives
 	----------
 	ScenarioInfo.M2P1 = Objectives.CategoriesInArea(
-    'primary',                      -- type
-    'incomplete',                   -- complete
-    OpStrings.M2P1Text,  -- title
-    OpStrings.M2P1Desc,  -- description
-    'kill',
-    {
-        MarkUnits = false,
-        Requirements = {
-            { Area = 'M1Outpost', Category = categories.FACTORY + categories.ENGINEER, CompareOp = '<=', Value = 0, ArmyIndex = UEF},
-        },
-    })
+        'primary',                      -- type
+        'incomplete',                   -- complete
+        OpStrings.M2P1Text,  -- title
+        OpStrings.M2P1Desc,  -- description
+        'kill',
+        {
+            MarkUnits = false,
+            Requirements = {
+                { Area = 'M1Outpost', Category = categories.FACTORY + categories.ENGINEER, CompareOp = '<=', Value = 0, ArmyIndex = UEF},
+            },
+        }
+    )
+    ScenarioInfo.M2P1:AddResultCallback(
+        function(result)
+            if(result) then
+                M1OutpostAI.DisableBase()
+                ScenarioFramework.Dialogue(OpStrings.UEFOutpost_Dead, nil, true)
+                Cinematics.EnterNISMode()
+                Cinematics.CameraMoveToMarker(ScenarioUtils.GetMarker('Cutscene_02b'), 1)
+                WaitSeconds(4)
+                Cinematics.ExitNISMode()
+                M2Capture()
+            end
+        end
+    )
     table.insert(AssignedObjectives, ScenarioInfo.M2P1)
 
+    ----------
+    -- Destroy Tac Objective
+    ----------
     ScenarioInfo.M2P2 = Objectives.KillOrCapture(
-    'primary',                      -- type
-    'incomplete',                   -- complete
-    OpStrings.M2P2Text,  -- title
-    OpStrings.M2P2Desc,  -- description
-    {                               -- target
-        Units = {ScenarioInfo.TacLauncher}
-    })
+        'primary',                      -- type
+        'incomplete',                   -- complete
+        OpStrings.M2P2Text,  -- title
+        OpStrings.M2P2Desc,  -- description
+        {                               -- target
+            Units = {ScenarioInfo.TacLauncher}
+        }
+    )
     table.insert(AssignedObjectives, ScenarioInfo.M2P2)
-
-    ScenarioInfo.M2P1:AddResultCallback(
-    function(result)
-        if(result) then
-            M1OutpostAI.DisableBase()
-            ScenarioFramework.Dialogue(OpStrings.UEFOutpost_Dead, nil, true)
-            Cinematics.EnterNISMode()
-            Cinematics.CameraMoveToMarker(ScenarioUtils.GetMarker('Cutscene_02b'), 1)
-            WaitSeconds(4)
-            Cinematics.ExitNISMode()
-        	M2Capture()
-        end
-    end)
 end
 
 function M2Capture()
@@ -529,44 +534,48 @@ function M2ObjectviesExtended()
     -- Objectives
     ----------
     ScenarioInfo.M2P3 = Objectives.Capture(
-    'primary',                      -- type
-    'incomplete',                   -- complete
-    OpStrings.M2P3Text,  -- title
-    OpStrings.M2P3Desc,  -- description
-    {
-        FlashVisible = true,
-        Units = {ScenarioInfo.UEFTech},
-    })
+        'primary',                      -- type
+        'incomplete',                   -- complete
+        OpStrings.M2P3Text,  -- title
+        OpStrings.M2P3Desc,  -- description
+        {
+            FlashVisible = true,
+            Units = {ScenarioInfo.UEFTech},
+        }
+    )
+    ScenarioInfo.M2P3:AddResultCallback(
+        function(result)
+            if(result) then
+                ScenarioFramework.Dialogue(OpStrings.M2TechCaptured, M3, true)
+            end
+        end
+    )
+    table.insert(AssignedObjectives, ScenarioInfo.M2P3)
 
+    ----------
+    -- Capture UEF Factory
+    ----------
     ScenarioInfo.M2S1 = Objectives.Capture(
-    'secondary',                      -- type
-    'incomplete',                   -- complete
-    OpStrings.M2S1Text,  -- title
-    OpStrings.M2S1Desc,  -- description
+        'secondary',                      -- type
+        'incomplete',                   -- complete
+        OpStrings.M2S1Text,  -- title
+        OpStrings.M2S1Desc,  -- description
         {                            -- target
             Units = {ScenarioInfo.UEFFactory},
         }
     )
-
-    ScenarioInfo.M2P3:AddResultCallback(
-    function(result)
-        if(result) then
-            ScenarioFramework.Dialogue(OpStrings.M2TechCaptured, M3, true)
-        end
-    end)
-    table.insert(AssignedObjectives, ScenarioInfo.M2P3)
-
     ScenarioInfo.M2S1:AddResultCallback(
-    function(result, units)
-        ScenarioFramework.PlayUnlockDialogue()
-        ScenarioFramework.RemoveRestrictionForAllHumans(categories.inu1004)
+        function(result, units)
+            ScenarioFramework.PlayUnlockDialogue()
+            ScenarioFramework.RemoveRestrictionForAllHumans(categories.inu1004)
 
-        ScenarioInfo.NFactory = units[1]
-        FactoryCaptured = true
-        if not ScenarioInfo.NFactory:IsDead() then
-            ScenarioFramework.Dialogue(OpStrings.UEFTauntFactory, nil, true)
+            ScenarioInfo.NFactory = units[1]
+            FactoryCaptured = true
+            if not ScenarioInfo.NFactory:IsDead() then
+                ScenarioFramework.Dialogue(OpStrings.UEFTauntFactory, nil, true)
+            end
         end
-    end)
+    )
     table.insert(AssignedObjectives, ScenarioInfo.M2S1)
 end
 
@@ -613,96 +622,103 @@ function M3()
     -- Objectives
     ----------
     ScenarioInfo.M3P1 = Objectives.KillOrCapture(
-    'primary',                      -- type
-    'incomplete',                   -- complete
-    OpStrings.M3P1Text,  -- title
-    OpStrings.M3P1Desc, -- description
+        'primary',                      -- type
+        'incomplete',                   -- complete
+        OpStrings.M3P1Text,  -- title
+        OpStrings.M3P1Desc, -- description
         {                               -- target
             Units = {ScenarioInfo.EnemyCommander}
         }
     )
-    table.insert(AssignedObjectives, ScenarioInfo.M3P1)
+    ScenarioInfo.M3P1:AddResultCallback(
+        function(result)
+            if(result) then
+                ScenarioFramework.CDRDeathNISCamera(ScenarioInfo.EnemyCommander)
+                M3BaseAI.DisableBase()
+                ScenarioFramework.EndOperationSafety()
+                ScenarioFramework.Dialogue(OpStrings.EnemyDead, PlayerWin, true)
+            end
+        end
+    )
+    table.insert(AssignedObjectives, ScenarioInfo.M3P1) 
 
+    ----------
+    -- Destroy Power Base
+    ----------
     ScenarioInfo.M3S1 = Objectives.CategoriesInArea(
-    'secondary',                      -- type
-    'incomplete',                   -- complete
-    OpStrings.M3S1Text,  -- title
-    OpStrings.M3S1Desc,  -- description
-    'kill',
-    {
-        MarkUnits = true,
-        Requirements = {
-            { Area = 'M3Power', Category = categories.ueb1201, CompareOp = '<=', Value = 0, ArmyIndex = UEF},
-            { Area = 'M3Power', Category = categories.ueb1201, CompareOp = '<=', Value = 0, ArmyIndex = UEF},
-            { Area = 'M3Power', Category = categories.ueb1201, CompareOp = '<=', Value = 0, ArmyIndex = UEF},
-        },
-    })
-
+        'secondary',                      -- type
+        'incomplete',                   -- complete
+        OpStrings.M3S1Text,  -- title
+        OpStrings.M3S1Desc,  -- description
+        'kill',
+        {
+            MarkUnits = true,
+            Requirements = {
+                { Area = 'M3Power', Category = categories.ueb1201, CompareOp = '<=', Value = 0, ArmyIndex = UEF},
+                { Area = 'M3Power', Category = categories.ueb1201, CompareOp = '<=', Value = 0, ArmyIndex = UEF},
+                { Area = 'M3Power', Category = categories.ueb1201, CompareOp = '<=', Value = 0, ArmyIndex = UEF},
+            },
+        }
+    )
+    ScenarioInfo.M3S1:AddResultCallback(
+        function(result)
+            if(result) then
+                for _, v in ScenarioInfo.Shields do
+                    if not v:IsDead() then
+                        v:ToggleScriptBit('RULEUTC_ShieldToggle')
+                    else
+                        return
+                    end
+                end
+                ScenarioFramework.Dialogue(OpStrings.M3ShieldsDead, nil, true)
+            end
+        end
+    )
     table.insert(AssignedObjectives, ScenarioInfo.M3S1)
 
+    ----------
+    -- Build T2 Air Factory
+    ----------
     ScenarioInfo.M3S2 = Objectives.CategoriesInArea(
-    'secondary',                      -- type
-    'incomplete',                   -- complete
-    OpStrings.M3S2Text,  -- title
-    OpStrings.M3S2Desc,  -- description
-    'Build',
-    {
-        MarkUnits = false,
-        MarkArea = false,
-        Requirements =
+        'secondary',                      -- type
+        'incomplete',                   -- complete
+        OpStrings.M3S2Text,  -- title
+        OpStrings.M3S2Desc,  -- description
+        'Build',
         {
-            {Area = 'M3', Category = categories.inb0202, CompareOp = '>=', Value = 1, ArmyIndex = Player1},
-        },
-    })
-
-    table.insert(AssignedObjectives, ScenarioInfo.M3S2)
-
-    ScenarioInfo.M3P1:AddResultCallback(
-    function(result)
-        if(result) then
-            ScenarioFramework.CDRDeathNISCamera(ScenarioInfo.EnemyCommander)
-            M3BaseAI.DisableBase()
-            ScenarioFramework.EndOperationSafety()
-            ScenarioFramework.Dialogue(OpStrings.EnemyDead, PlayerWin, true)
-        end
-    end) 
-
-    ScenarioInfo.M3S1:AddResultCallback(
-    function(result)
-        if(result) then
-            for _, v in ScenarioInfo.Shields do
-                if not v:IsDead() then
-                    v:ToggleScriptBit('RULEUTC_ShieldToggle')
-                else
-                    return
-                end
-            end
-            ScenarioFramework.Dialogue(OpStrings.M3ShieldsDead, nil, true)
-        end
-    end)
-
+            MarkUnits = false,
+            MarkArea = false,
+            Requirements =
+            {
+                {Area = 'M3', Category = categories.inb0202, CompareOp = '>=', Value = 1, ArmyIndex = Player1},
+            },
+        }
+    )
     ScenarioInfo.M3S2:AddResultCallback(
-    function(result)
-        if(result) then
-            ScenarioFramework.Dialogue(OpStrings.Tech2AirFactoryBuilt, nil, true)
-            ForkThread(GiveOrbitalBombardmentAbil)
+        function(result)
+            if(result) then
+                ScenarioFramework.Dialogue(OpStrings.Tech2AirFactoryBuilt, nil, true)
+                ForkThread(GiveOrbitalBombardmentAbil)
+            end
         end
-    end)  
+    )  
+    table.insert(AssignedObjectives, ScenarioInfo.M3S2)
 end
 
 function M3SetFactoryObjective()
     ScenarioFramework.Dialogue(OpStrings.M3_ProtectFactory, nil, true)
 
     ScenarioInfo.M3S3 = Objectives.Protect(
-    'secondary',                      -- type
-    'incomplete',                   -- complete
-    OpStrings.M3S3Text,  -- title
-    OpStrings.M3S3Desc,  -- description
+        'secondary',                      -- type
+        'incomplete',                   -- complete
+        OpStrings.M3S3Text,  -- title
+        OpStrings.M3S3Desc,  -- description
         {
             Units = {ScenarioInfo.NFactory},
         }
     )
     table.insert(AssignedObjectives, ScenarioInfo.M3S3)
+    
     ScenarioFramework.CreateUnitDeathTrigger(FacDead, ScenarioInfo.NFactory)
 end
 
