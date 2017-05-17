@@ -18,7 +18,7 @@ Cybran Commander : CDR TODO (Voice Actor: TODO)
 Nomads (TODO)
 
 --- General
-Tech Level: Full T1, Partial T2 (start with T2 eco and unlock more units after objectives are complete)
+Tech Level: Full T1, Partial T2 (start with T2 eco and unlock more units after objectives are complete), transports are not available for most parts of the mission
 
 -- Map
 Map Biome: Theta biome
@@ -42,9 +42,10 @@ Props: Low
 - combat test for the acu (kill 50 units to unlock the gun upgrade)
 - engineering test for the acu (build 20 buildings to unlock the t2 upgrade)
 - speed test? (gotta go fast!)
+- destroy power grid in UEF base to slow down production
 
 --Part 2
-- fixed drop of units to kill the uef base on the plateu
+- fixed drop of units to kill the uef base on the plateu (a support nomad entity drops a fixed set of units after the cybran temporarily disables the aa def on the mountain on the left). reward: 3 mex spots on the hill + good firing solution on uef outpost
 
 --Part 3
-- Kill AA radar to allow cybran commader to drop units
+- Kill AA radar to allow cybran commader to drop units (these units are dropped behind the large UEF base and target important stuff there)
