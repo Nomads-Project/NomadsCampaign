@@ -1,0 +1,51 @@
+---- Nomads Mission 2 V0.1 (WIP)
+--- Story
+The information gathered when capturing the tech center allowed us to obtain a UEF assault plan on a planet in a neighboring system. 
+You are send there to investigate and make contact with the local forces as they are potential allies.
+
+Meanwhile the scientists managed to develop a prototype of a ground based command unit to overcome latency problems that occur when controlling units from space. (basic acu, no upgrades)
+
+At the time of your arrival, the cybran colony is already under attack by UEF forces. 
+However, they seem to be using large scale radar jamming and thus you can approach undetected. 
+A first attempt to establish radio contact with the Cybran fails (same problems as with the UEF in mission 1) but after a short while, the cybran contacts you. 
+(he managed to adapt his technology to be compatible).
+
+NB: the Cybran commander is the same as in mission 5
+
+--- Characters
+UEF Commander : CDR TODO (Voice Actor: TODO)
+Cybran Commander : CDR TODO (Voice Actor: TODO)
+Nomads (TODO)
+
+--- General
+Tech Level: Full T1, Partial T2 (start with T2 eco and unlock more units after objectives are complete), transports are not available for most parts of the mission
+
+-- Map
+Map Biome: Theta biome
+Map size: 20x20
+Starting Wrecks: 
+Props: Low
+
+--- Primary Objectives
+--Part 1
+- establish contact with the unknown army that is under UEF attack
+
+--Part 2
+- destroy a supply base of the UEF that is sending civilian trucks with supplies to the main UEF base (each truck will give a ressource bonus to the uef base, i.e. natural producer of mass, destroy them fast)
+
+--Part 3
+- destroy UEF battleship reinforcement
+- destroy UEF commander
+
+--- Secondary Objectives
+--Part 1
+- combat test for the acu (kill 50 units to unlock the gun upgrade)
+- engineering test for the acu (build 20 buildings to unlock the t2 upgrade)
+- speed test? (gotta go fast!)
+- destroy power grid in UEF base to slow down production
+
+--Part 2
+- fixed drop of units to kill the uef base on the plateu (a support nomad entity drops a fixed set of units after the cybran temporarily disables the aa def on the mountain on the left). reward: 3 mex spots on the hill + good firing solution on uef outpost
+
+--Part 3
+- Kill AA radar to allow cybran commader to drop units (these units are dropped behind the large UEF base and target important stuff there)

@@ -1,0 +1,48 @@
+story/objectives/stuff that happens:
+some nomad forces start a mutiny and try to join the aeon
+this can have catastrophic consequences as the coordinates of the nomad home world could be compromised
+some still loyal scientists and officiers manage to sabotage the hyper space generator of the main ship that is on its way to the aeon
+dissidents build a base on the nearby planet to repair the damage, the loyal nomads try to sabotage their efforts by starting small attacks from a mining base and setting up an emergency signal
+this delay allows you to catch up and eliminate these traitors
+meanwhile, blacksun has been fired and unnormal quantum signals are detected
+later in the mission the seraphim show up
+
+characters:
+second in command
+chief engineer
+aeon commander
+nomad commander
+nomad scientist
+seraphim (distorted)
+
+detailed mission plan:
+map type: desert
+
+Objective 1:
+secure the landing area and contact the scientists that are broadcasting the emergency signal
+secondary 1:
+prepare defences in the strategic locations to defend against the brainwashed nomad forces (repair them, when repaired they become operational)
+
+#map expands after 5/8/12 minutes
+
+Objective 2:
+defend the loyal nomad outpost against the attacking nomad forces from the 3 supply bases
+secondary 2:
+evacuate the leading scientists (civil truck, controlable with a move ping like the megabot of brackman)
+evacuating them allows the nomad fleet to use a nearby asteroid field to cause some meteor shower on the nearest sera base in the last part of the mission
+
+#shortly before the last nomad supply base is destroyed, the jamming field in the loyal nomad colony is destroyed and they call for help
+
+Objective 3:
+destroy the 2 nomad outposts and the nomad main base and execute the traitors
+
+#when the base is 50% destroyed (nomad acu is somewhere in the back), the seraphim arrive
+
+Objective 4:
+destroy the seraphim quantum gates
+(lots of sera units are regularly dropped in drop zones and there are some larger bases near quantum gates which spawn units)
+
+secondary 4:
+decide to evacuate the nomad acu (bring it to your base where it gets picked up with a t2 transport) or to destroy it (it evacuates to a fortified position in the corner of the map)
+
+#when the quantum gates are destroyed t4 sera bombers show up and you decide to take off and better leave fast (outro)
