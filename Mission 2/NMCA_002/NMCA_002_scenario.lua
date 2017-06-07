@@ -29,7 +29,7 @@ ScenarioInfo = {
     Configurations = {
         ['standard'] = {
             teams = {
-                { name = 'FFA', armies = {'UEF','UEF_Disabled','Cybran','Nomad_Reinforcements','Player1','Player2','Player3','Player4',} },
+                { name = 'FFA', armies = {'UEF','UEF_Disabled','Cybran','Nomad_Reinforcements','Player1','Player2','Player3','Player4','Civilian',} },
             },
             customprops = {
             },

@@ -8,11 +8,10 @@ local ScenarioFramework = import('/lua/ScenarioFramework.lua')
 local ScenarioPlatoonAI = import('/lua/ScenarioPlatoonAI.lua')
 local ScenarioUtils = import('/lua/sim/ScenarioUtilities.lua')
 local Difficulty = ScenarioInfo.Options.Difficulty
---local OpStrings   = import('/maps/NMCA_003/NMCA_003_strings.lua')
 
 -- AI
-local M1_UEF_Base_AI = import('/maps/NMCA_002/NMCA_002_M1_UEF_Base_AI.lua')
-local Cybran_NW_Base_AI = import('/maps/NMCA_002/NMCA_002_Cybran_NW_Base_AI.lua')
+local M1UEFAI = import('/maps/NMCA_002/M1_UEF_AI.lua')
+local M1CybranAI = import('/maps/NMCA_002/M1_Cybran_AI.lua')
 
 -- Global Variables
 AssignedObjectives = {}
@@ -26,7 +25,8 @@ ScenarioInfo.Player1 = 5
 ScenarioInfo.Player2 = 6
 ScenarioInfo.Player3 = 7
 ScenarioInfo.Player4 = 8
-PlayerColours = {[5]={r=250, g=250, b=0},[6]={r=189, g=183, b=107},[7]={r=255, g=255, b=165},[8]={r=255, g=192, b=0},}
+ScenarioInfo.Civilian = 9
+PlayerColours = {[5]={r=225, g=135, b=62},[6]={r=189, g=183, b=107},[7]={r=255, g=255, b=165},[8]={r=255, g=192, b=0},}
 
 -- Local Variables
 local UEF = ScenarioInfo.UEF
@@ -37,6 +37,7 @@ local Player1 = ScenarioInfo.Player1
 local Player2 = ScenarioInfo.Player2
 local Player3 = ScenarioInfo.Player3
 local Player4 = ScenarioInfo.Player4
+local Civilian = ScenarioInfo.Civilian
 
 function OnPopulate()
 	ScenarioUtils.InitializeScenarioArmies()
@@ -54,46 +55,35 @@ function OnPopulate()
 	ScenarioFramework.SetUEFColor(UEF)
 	ScenarioFramework.SetUEFColor(UEF_Disabled)
 	ScenarioFramework.SetCybranColor(Cybran)
-	SetArmyColor("Nomad_Reinforcements", 255, 191, 128)
+	SetArmyColor('Civilian', 165, 9, 1)
+	SetArmyColor("Nomad_Reinforcements", 225, 135, 62)
 	
 	-- Create M1 UEF Base
-	M1_UEF_Base_AI.Base_Spawner()
-	Cybran_NW_Base_AI.Base_Spawner()
+	M1UEFAI.M1UEFBase()
+	ScenarioUtils.CreateArmyGroup('UEF', 'M1_Walls')
+
+	-- Create M1 Cybran Base
+	M1CybranAI.M1CybranBase()
+	ScenarioUtils.CreateArmyGroup('Cybran', 'M1_Cybran_Base_Walls')
 	
+	-- Civilian Structures
+	ScenarioUtils.CreateArmyGroup('Civilian', 'M1CivilianTechBase', true)
+
 	-- Debug vis markers
-	
-	ScenarioFramework.CreateVisibleAreaLocation(20, "UEF_M1_Land_Base_1", 0, ArmyBrains[Player1])
-	ScenarioFramework.CreateVisibleAreaLocation(20, "UEF_M1_Land_Base_2", 0, ArmyBrains[Player1])
-	ScenarioFramework.CreateVisibleAreaLocation(25, "UEF_M1_Land_Base_3", 0, ArmyBrains[Player1])
-	ScenarioFramework.CreateVisibleAreaLocation(20, "UEF_M1_Land_Base_4", 0, ArmyBrains[Player1])
-	ScenarioFramework.CreateVisibleAreaLocation(30, "UEF_M1_Resource_Base_1", 0, ArmyBrains[Player1])
-	ScenarioFramework.CreateVisibleAreaLocation(25, "UEF_M1_Patrol_Base_1", 0, ArmyBrains[Player1])
-	ScenarioFramework.CreateVisibleAreaLocation(25, "UEF_M1_Air_Base_1", 0, ArmyBrains[Player1])
-	
-	ScenarioFramework.CreateVisibleAreaLocation(30, "Cybran_NW_Land_Base_1", 0, ArmyBrains[Player1])
-	ScenarioFramework.CreateVisibleAreaLocation(30, "Cybran_NW_Land_Base_2", 0, ArmyBrains[Player1])
-	ScenarioFramework.CreateVisibleAreaLocation(27, "Cybran_NW_Land_Base_3", 0, ArmyBrains[Player1])
-	ScenarioFramework.CreateVisibleAreaLocation(27, "Cybran_NW_Land_Base_4", 0, ArmyBrains[Player1])
-	ScenarioFramework.CreateVisibleAreaLocation(30, "Cybran_NW_Eco_Base_1", 0, ArmyBrains[Player1])
-	ScenarioFramework.CreateVisibleAreaLocation(25, "Cybran_NW_Patrol_Base_1", 0, ArmyBrains[Player1])
-	ScenarioFramework.CreateVisibleAreaLocation(20, "Cybran_NW_Air_Base_1", 0, ArmyBrains[Player1])
-	ScenarioFramework.CreateVisibleAreaLocation(20, "Cybran_NW_Air_Base_2", 0, ArmyBrains[Player1])
+
+	-- Spawn Initial Units
+	ScenarioUtils.CreateArmyGroup('Cybran', 'M1_Cybran_Init_Units')
+	ScenarioUtils.CreateArmyGroup('Cybran', 'M1_Cybran_Init_Destroyed', true)
+	local UEFInitUnits = ScenarioUtils.CreateArmyGroupAsPlatoon('UEF', 'M1_UEF_Init_Units', 'GrowthFormation')
+
+	for k, v in UEFInitUnits:GetPlatoonUnits() do
+		ScenarioFramework.GroupPatrolRoute({v}, ScenarioPlatoonAI.GetRandomPatrolRoute(ScenarioUtils.ChainToPositions('M1_Init_Fight_Chain')))
+	end
 end
    
 function OnStart()
 	ScenarioInfo.CybranACU = ScenarioFramework.SpawnCommander('Cybran', 'ACU', false, 'Mr Cybran', true, PlayerDeath, {'AdvancedEngineering', 'StealthGenerator', 'CoolingUpgrade'})
-	ScenarioUtils.CreateArmyGroupAsPlatoon('Cybran', 'Starting_Attack_1', 'GrowthFormation')
-	ScenarioUtils.CreateArmyGroupAsPlatoon('UEF', 'Starting_Attack_1', 'GrowthFormation')
-	
-	platoon = ScenarioUtils.CreateArmyGroupAsPlatoon('UEF', 'Starting_Attack_2', 'GrowthFormation')
-    ScenarioFramework.PlatoonPatrolChain(platoon, 'UEF_M1_NW_Attack_Chain_3')
-	platoon = ScenarioUtils.CreateArmyGroupAsPlatoon('UEF', 'Starting_Attack_3', 'GrowthFormation')
-    ScenarioFramework.PlatoonPatrolChain(platoon, 'UEF_M1_NW_Attack_Chain_2')
-	
-	platoon = ScenarioUtils.CreateArmyGroupAsPlatoon('Cybran', 'Starting_Attack_2', 'GrowthFormation')
-    ScenarioFramework.PlatoonPatrolChain(platoon, 'Cybran_NW_Land_Attack_Chain_3')
-	platoon = ScenarioUtils.CreateArmyGroupAsPlatoon('Cybran', 'Starting_Attack_3', 'GrowthFormation')
-    ScenarioFramework.PlatoonPatrolChain(platoon, 'Cybran_NW_Land_Attack_Chain_1')
+
 	ForkThread(Intro_Mission_1)
 end
    
@@ -101,28 +91,42 @@ function Intro_Mission_1()
 	tblArmy = ListArmies()
 	
 	--Intro Cinematic
-	Cinematics.EnterNISMode()
-	ScenarioFramework.CreateVisibleAreaLocation(30, "Intro_Cine_Vis_Marker", 20, ArmyBrains[Player1])
-	Cinematics.CameraMoveToMarker(ScenarioUtils.GetMarker("Intro_Cine_1"), 0)
-	Cinematics.CameraMoveToMarker(ScenarioUtils.GetMarker("Intro_Cine_1"), 1)
-	Cinematics.CameraMoveToMarker(ScenarioUtils.GetMarker("Intro_Cine_2"), 0.5)
-	Cinematics.CameraMoveToMarker(ScenarioUtils.GetMarker("Intro_Cine_2"), 1)
-	Cinematics.CameraMoveToMarker(ScenarioUtils.GetMarker("Intro_Cine_3"), 0.5)
-	Cinematics.CameraMoveToMarker(ScenarioUtils.GetMarker("Intro_Cine_3"), 1)
-	Cinematics.CameraMoveToMarker(ScenarioUtils.GetMarker("Intro_Cine_4"), 0.5)
-	Cinematics.CameraMoveToMarker(ScenarioUtils.GetMarker("Intro_Cine_4"), 1.5)
-	Cinematics.CameraMoveToMarker(ScenarioUtils.GetMarker("Intro_Cine_5"), 0.5)
-	Cinematics.CameraMoveToMarker(ScenarioUtils.GetMarker("Intro_Cine_5"), 1)
-	Cinematics.CameraMoveToMarker(ScenarioUtils.GetMarker("Intro_Cine_6"), 0.5)
-	Cinematics.CameraMoveToMarker(ScenarioUtils.GetMarker("Intro_Cine_6"), 1)
-	Cinematics.CameraMoveToMarker(ScenarioUtils.GetMarker("Intro_Cine_7"), 0.5)
-	Cinematics.CameraMoveToMarker(ScenarioUtils.GetMarker("Intro_Cine_7"), 1.5)
-	Cinematics.CameraMoveToMarker(ScenarioUtils.GetMarker("Intro_Cine_8"), 0.5)
-	Cinematics.CameraMoveToMarker(ScenarioUtils.GetMarker("Intro_Cine_8"), 2)
-	Cinematics.CameraMoveToMarker(ScenarioUtils.GetMarker(tostring(tblArmy[GetFocusArmy()])), 4)	--N.B the camer markers for eatch player double up as the starting spot markers observer is called nil
-	Cinematics.ExitNISMode()
+	--Cinematics.EnterNISMode()
+	--Cinematics.ExitNISMode()
+
+	ForkThread(CheatEconomy, Cybran)
+	ForkThread(CheatEconomy, UEF)
 	ForkThread(SpawnInitalUnits)
 	ForkThread(Start_Mission_1)
+
+	local Patrol = ScenarioUtils.CreateArmyGroupAsPlatoon('UEF', 'M1_Air_Patrols_D'..Difficulty, 'GrowthFormation')
+
+	-- Create M1 UEF Base Patrols
+	for k, v in Patrol:GetPlatoonUnits() do
+		ScenarioFramework.GroupPatrolRoute({v}, ScenarioPlatoonAI.GetRandomPatrolRoute(ScenarioUtils.ChainToPositions('M1_UEF_Air_Patrol')))
+	end
+
+	-- Create M1 Cybran Base Patrols
+	local CybranPatrol = ScenarioUtils.CreateArmyGroupAsPlatoon('Cybran', 'M1_Cybran_Base_Patrol', 'GrowthFormation')
+
+	for k, v in CybranPatrol:GetPlatoonUnits() do
+		ScenarioFramework.GroupPatrolRoute({v}, ScenarioPlatoonAI.GetRandomPatrolRoute(ScenarioUtils.ChainToPositions('M1_Cybran_Air_Patrol')))
+	end
+
+	-- Debug
+	ScenarioFramework.SetPlayableArea('M2_Area', true)
+
+	local function MissionNameAnnouncement()
+        ScenarioFramework.SimAnnouncement(ScenarioInfo.name, 'mission by [e]JJs_AI')
+    end
+
+    ScenarioFramework.CreateTimerTrigger(MissionNameAnnouncement, 7)
+
+    -- Create an Intel Trigger for the Cybran and the Player
+    ScenarioFramework.CreateArmyIntelTrigger(FixCybranAlliance, ArmyBrains[Cybran], 'LOSNow', false, true,  categories.NOMADS, true, ArmyBrains[Player1] )
+
+    -- Create another Intel Trigger for the UEF to attack the Player when seen
+    ScenarioFramework.CreateArmyIntelTrigger(M1UEFAI.StartPlayerAttacks, ArmyBrains[UEF], 'LOSNow', false, true,  categories.NOMADS, true, ArmyBrains[Player1] )
 end
 
 function Start_Mission_1()
@@ -132,32 +136,33 @@ function Start_Mission_1()
     ScenarioInfo.M1P1 = Objectives.Protect(
         'primary',                    											-- type
         'incomplete',                   										-- complete
-        'Establish contact with the Cybran ACU',  								-- title
-        'Establish contact with the Cybran ACU',   								-- description
+        'Establish Contact with Cybran ACU',  								-- title
+        'A Cybran Commander is fighting against the UEF. We could use this to our advantage. Establish contact with the Cybran Commander.',   								-- description
         {
 			Units = {ScenarioInfo.CybranACU},
-			Timer = nil,   														-- if nil, requires manual completion
+			FlashVisible = true,													-- if nil, requires manual completion
 			NumRequired = 1,          											-- how many must survive
         }
 	)
     ScenarioInfo.M1P1:AddResultCallback(
         function(result)
             if(result) then
-				LOG("TODO")
+				ForkThread(Intro_Mission_2)
             end
         end
 	)
 	table.insert(AssignedObjectives, ScenarioInfo.M1P1)
-	ForkThread(M1_South_Spawner)
+
 	WaitSeconds(4)
+
 	---------------------------------------------------------------------
     -- Mission 1 Secondary Objective 1 - Kill 10 units with nomads ACU --
     ---------------------------------------------------------------------
     ScenarioInfo.M1S1 = Objectives.UnitStatCompare(
         'secondary',                    										-- type
         'incomplete',                   										-- complete
-        'ACU combat test',  													-- title
-        'Kill 10 Units with the marked ACU',   									-- description
+        'ACU Combat Test',  													-- title
+        'Kill 10 enemy units with the marked ACU.',   									-- description
 		'kill',																	-- action
         {
 			Unit = ScenarioInfo.PlayerACU[5],
@@ -173,16 +178,12 @@ function Start_Mission_1()
             end
         end
 	)
-	ScenarioFramework.CreateTimerTrigger(Intro_Mission_2, 30)
 end
 
 function Intro_Mission_2()
-	LOG("TODO")
+	-- Start Dialogue
+
 	ScenarioFramework.SetPlayableArea('M2_Area', true)
-	
-    for _, player in ScenarioInfo.HumanPlayers do
-        SetAlliance(player, Cybran, 'Ally')
-    end
 	Start_Mission_2()
 end
 
@@ -193,8 +194,8 @@ function Start_Mission_2()
 	ScenarioInfo.M2P1 = Objectives.CategoriesInArea(
 		'primary',                      					-- type
 		'incomplete',                   					-- status
-		'Destroy the UEF base',    							-- title
-		'Help the Cybran commander destroy the UEF base',  	-- description
+		'Destroy Northern UEF Outpost',    							-- title
+		'Our Cybran ally is being attacked. The UEF are assaulting us also. Destroy the northern UEF Outpost to put a stop to these attacks.',  	-- description
 		'kill',                         					-- action
 		{                              						-- target
 			MarkUnits = false,
@@ -210,23 +211,21 @@ function Start_Mission_2()
             end
         end
     )
-	table.insert(AssignedObjectives, ScenarioInfo.M2P1)
-	WaitSeconds(4)
-	ScenarioInfo.M1P1:ManualResult(true)
-	WaitSeconds(4)
+    WaitSeconds(2)
 	--------------------------------------------------------------------
     -- Mission 2 Secondary Objective 1 - Mark Targets of opportunity  --
     --------------------------------------------------------------------
 	ScenarioInfo.M2S1 = Objectives.CategoriesInArea(
 		'secondary',                      					-- type
 		'incomplete',                   					-- status
-		'Targets of opportunity - T2 power generators',    	-- title
-		'These power generators are in a poorly defended area destroying them will cripple the production in the UEF base',  			-- description
+		'Cripple UEF Production',    	-- title
+		'These Power Generators are in a poorly defended area. Destroying them will cripple the production in the UEF base.',  			-- description
 		'kill',                         					-- action
 		{                              						-- target
 			MarkUnits = true,
+			MarkArea = true,
 			Requirements = {
-				{Area = 'North_UEF_Base_Target_Op', Category = categories.ueb1201, CompareOp = '<=', Value = 0, ArmyIndex = UEF},
+				{Area = 'UEF_M1_Power_Area', Category = categories.ueb1201, CompareOp = '<=', Value = 0, ArmyIndex = UEF},
 			},
 		}
 	)
@@ -241,13 +240,42 @@ function Start_Mission_2()
 end
 
 function Intro_Mission_3()
-	LOG("TODO")
-	ScenarioFramework.SetPlayableArea('M3_Area', true)
-	Start_Mission_3()
 end
 
 function Start_Mission_3()
-	LOG("TODO")
+    Mission_3_Supply_Trucks()
+end
+
+function Mission_3_Supply_Trucks()
+	while ScenarioInfo.M3P1.Active do
+		if ScenarioInfo.M3P1.Active then
+			platoon = ScenarioUtils.CreateArmyGroupAsPlatoon('UEF', 'M3_Trucks', 'GrowthFormation')
+			ScenarioFramework.PlatoonPatrolChain(platoon, 'UEF_M1_SW_Attack_Chain_1')
+			WaitSeconds(180)
+		end
+	end
+end
+
+-- MISC FUNCTIONS --
+function FixCybranAlliance()
+    for _, Player in ScenarioInfo.HumanPlayers do
+        SetAlliance(Player, Cybran, 'Ally')
+        SetAlliance(Cybran, Player, 'Ally')
+    end
+    -- Create Objective for this
+    ScenarioInfo.M1P1:ManualResult(true)
+
+    ScenarioInfo.ProtectCybran = Objectives.Protect(
+        'secondary',                    									-- type
+        'incomplete',                   									-- complete
+        'Ensure Safety of Cybran Commander',  								-- title
+        'The Cybran will help us destroy the UEF Commander. Ensure his safety during the operation.',   								-- description
+        {
+			Units = {ScenarioInfo.CybranACU},									-- if nil, requires manual completion
+			NumRequired = 1,          											-- how many must survive
+        }
+	)
+	table.insert(AssignedObjectives, ScenarioInfo.ProtectCybran)
 end
 
 function SpawnInitalUnits()
@@ -311,70 +339,15 @@ end
 
 function M1_South_Spawner()
 	while ScenarioInfo.M1P1.Active or ScenarioInfo.M2P1.Active do
-		if ScenarioInfo.M1P1.Active or ScenarioInfo.M2P1.Active then
-			platoon = ScenarioUtils.CreateArmyGroupAsPlatoonVeteran('UEF', 'SW_Attack_4', 'GrowthFormation', 5)
-			ScenarioFramework.PlatoonPatrolChain(platoon, 'UEF_M1_SW_Attack_Chain_1')
-			WaitSeconds(12)
-		end
-		if ScenarioInfo.M1P1.Active or ScenarioInfo.M2P1.Active then
-			platoon = ScenarioUtils.CreateArmyGroupAsPlatoonVeteran('UEF', 'SW_Attack_1', 'GrowthFormation', 5)
-			ScenarioFramework.PlatoonPatrolChain(platoon, 'UEF_M1_SW_Attack_Chain_3')
-			WaitSeconds(17)
-		end
-		if ScenarioInfo.M1P1.Active or ScenarioInfo.M2P1.Active then
-			platoon = ScenarioUtils.CreateArmyGroupAsPlatoonVeteran('UEF', 'SW_Attack_3', 'GrowthFormation', 5)
-			ScenarioFramework.PlatoonPatrolChain(platoon, 'UEF_M1_SW_Attack_Chain_2')
-			WaitSeconds(25)
-		end
-		if ScenarioInfo.M1P1.Active or ScenarioInfo.M2P1.Active then
-			platoon = ScenarioUtils.CreateArmyGroupAsPlatoonVeteran('UEF', 'SW_Attack_2', 'GrowthFormation', 5)
-			ScenarioFramework.PlatoonPatrolChain(platoon, 'UEF_M1_SW_Attack_Chain_3')
-			WaitSeconds(15)
-		end
-		if ScenarioInfo.M1P1.Active or ScenarioInfo.M2P1.Active then
-			platoon = ScenarioUtils.CreateArmyGroupAsPlatoonVeteran('UEF', 'SW_Attack_6', 'GrowthFormation', 5)
-			ScenarioFramework.PlatoonPatrolChain(platoon, 'UEF_M1_SW_Attack_Chain_3')
-			WaitSeconds(18)
-		end
-		if ScenarioInfo.M1P1.Active or ScenarioInfo.M2P1.Active then
-			platoon = ScenarioUtils.CreateArmyGroupAsPlatoonVeteran('UEF', 'SW_Attack_5', 'GrowthFormation', 5)
-			ScenarioFramework.PlatoonPatrolChain(platoon, 'UEF_M1_SW_Attack_Chain_3')
-			WaitSeconds(30)
-		end
 	end
 end
 
--- Prints tables in the game log. usage: print_r ( table ) e.g print_r ( ScenarioInfo.PlayerCDR )
-function print_r ( t )  
-    local print_r_cache={}
-    local function sub_print_r(t,indent)
-        if (print_r_cache[tostring(t)]) then
-            LOG(indent.."*"..tostring(t))
-        else
-            print_r_cache[tostring(t)]=true
-            if (type(t)=="table") then
-                for pos,val in pairs(t) do
-                    if (type(val)=="table") then
-                        LOG(indent.."["..pos.."] => "..tostring(t).." {")
-                        sub_print_r(val,indent..string.rep(" ",string.len(pos)+8))
-                        LOG(indent..string.rep(" ",string.len(pos)+6).."}")
-                    elseif (type(val)=="string") then
-                        LOG(indent.."["..pos..'] => "'..val..'"')
-                    else
-                        LOG(indent.."["..pos.."] => "..tostring(val))
-                    end
-                end
-            else
-                LOG(indent..tostring(t))
-            end
-        end
+function CheatEconomy(army)
+    ArmyBrains[army]:GiveStorage('MASS', 10000)
+    ArmyBrains[army]:GiveStorage('ENERGY', 10000)
+    while(true) do
+        ArmyBrains[army]:GiveResource('MASS', 10000)
+        ArmyBrains[army]:GiveResource('ENERGY', 10000)
+        WaitSeconds(1)
     end
-    if (type(t)=="table") then
-        LOG(tostring(t).." {")
-        sub_print_r(t,"  ")
-        LOG("}")
-    else
-        sub_print_r(t,"  ")
-    end
-    LOG()
 end
