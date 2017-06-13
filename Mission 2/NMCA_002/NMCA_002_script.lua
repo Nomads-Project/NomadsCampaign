@@ -12,6 +12,8 @@ local Difficulty = ScenarioInfo.Options.Difficulty
 -- AI
 local M1UEFAI = import('/maps/NMCA_002/M1_UEF_AI.lua')
 local M1CybranAI = import('/maps/NMCA_002/M1_Cybran_AI.lua')
+local M3UEFAI = import('/maps/NMCA_002/M3_UEF_AI.lua')
+local M3CybranAI = import('/maps/NMCA_002/M3_Cybran_AI.lua')
 
 -- Global Variables
 AssignedObjectives = {}
@@ -41,7 +43,7 @@ local Civilian = ScenarioInfo.Civilian
 
 function OnPopulate()
 	ScenarioUtils.InitializeScenarioArmies()
-	ScenarioFramework.SetPlayableArea('M1_Area', false)
+	ScenarioFramework.SetPlayableArea('M2_Area', false)
 	
 	-- Set Unit Cap
 	ScenarioFramework.SetSharedUnitCap(1000)
@@ -65,6 +67,10 @@ function OnPopulate()
 	-- Create M1 Cybran Base
 	M1CybranAI.M1CybranBase()
 	ScenarioUtils.CreateArmyGroup('Cybran', 'M1_Cybran_Base_Walls')
+	local Jammer = ScenarioUtils.CreateArmyUnit('Cybran', 'Jammer')
+	Jammer:SetCustomName("Long Range Jammer")
+	Jammer:SetCanBeKilled(false)
+	Jammer:SetCanTakeDamage(false)
 	
 	-- Civilian Structures
 	ScenarioUtils.CreateArmyGroup('Civilian', 'M1CivilianTechBase', true)
@@ -75,10 +81,7 @@ function OnPopulate()
 	ScenarioUtils.CreateArmyGroup('Cybran', 'M1_Cybran_Init_Units')
 	ScenarioUtils.CreateArmyGroup('Cybran', 'M1_Cybran_Init_Destroyed', true)
 	local UEFInitUnits = ScenarioUtils.CreateArmyGroupAsPlatoon('UEF', 'M1_UEF_Init_Units', 'GrowthFormation')
-
-	for k, v in UEFInitUnits:GetPlatoonUnits() do
-		ScenarioFramework.GroupPatrolRoute({v}, ScenarioPlatoonAI.GetRandomPatrolRoute(ScenarioUtils.ChainToPositions('M1_Init_Fight_Chain')))
-	end
+	ScenarioFramework.PlatoonPatrolChain(UEFInitUnits, 'M1_Init_Fight_Chain')
 end
    
 function OnStart()
@@ -89,15 +92,39 @@ end
    
 function Intro_Mission_1()
 	tblArmy = ListArmies()
+
+	local VisMarker1_1 = ScenarioFramework.CreateVisibleAreaLocation(75, 'M1_Init_Fight_Chain0', 0, ArmyBrains[Player1])
+	local TankToTrack = ScenarioInfo.UnitNames[UEF]['CineTank']
 	
 	--Intro Cinematic
-	--Cinematics.EnterNISMode()
-	--Cinematics.ExitNISMode()
+	Cinematics.EnterNISMode()
+	Cinematics.CameraMoveToMarker(ScenarioUtils.GetMarker('M1_Init_Camera_1'), 0)
+
+	WaitSeconds(2)
+
+	Cinematics.CameraTrackEntity(TankToTrack, 15, 1)
+
+	WaitSeconds(5)
+
+	Cinematics.CameraMoveToMarker(ScenarioUtils.GetMarker('M1_Init_Camera_2'), 3)
+
+	WaitSeconds(3)
+
+	Cinematics.CameraMoveToMarker(ScenarioUtils.GetMarker('Player1'), 4)
+	ForkThread(SpawnInitalUnits)
+
+	WaitSeconds(5)
+
+	ScenarioFramework.SetPlayableArea('M1_Area', true)
+
+	VisMarker1_1:Destroy()
+	ScenarioFramework.ClearIntel(ScenarioUtils.MarkerToPosition('M1_Init_Fight_Chain0'), 75)
+	Cinematics.ExitNISMode()
 
 	ForkThread(CheatEconomy, Cybran)
 	ForkThread(CheatEconomy, UEF)
-	ForkThread(SpawnInitalUnits)
 	ForkThread(Start_Mission_1)
+	ForkThread(M1_South_Spawner)
 
 	local Patrol = ScenarioUtils.CreateArmyGroupAsPlatoon('UEF', 'M1_Air_Patrols_D'..Difficulty, 'GrowthFormation')
 
@@ -207,7 +234,7 @@ function Start_Mission_2()
     ScenarioInfo.M2P1:AddResultCallback(
         function(result)
             if(result) then
-				LOG("TODO")
+				ForkThread(Intro_Mission_3)
             end
         end
     )
@@ -240,6 +267,16 @@ function Start_Mission_2()
 end
 
 function Intro_Mission_3()
+	ForkThread(Mission_3_Supply_Trucks)
+	ScenarioFramework.SetPlayableArea('M3_Area', true)
+
+	-- Disable Bases
+	M1UEFAI.DisableBase()
+	M1CybranAI.DisableBase()
+
+	-- New AI
+	M3UEFAI.M3UEFBase()
+	M3CybranAI.M3CybranBase()
 end
 
 function Start_Mission_3()
@@ -339,6 +376,11 @@ end
 
 function M1_South_Spawner()
 	while ScenarioInfo.M1P1.Active or ScenarioInfo.M2P1.Active do
+		if ScenarioInfo.M1P1.Active or ScenarioInfo.M2P1.Active then
+			platoon = ScenarioUtils.CreateArmyGroupAsPlatoonVeteran('UEF', 'M1_South_Attacking_Units', 'AttackFormation', 5)
+			ScenarioFramework.PlatoonPatrolChain(platoon, 'M1_UEF_Attack_South')
+			WaitSeconds(90)
+		end
 	end
 end
 

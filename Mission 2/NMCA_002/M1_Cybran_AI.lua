@@ -62,7 +62,7 @@ function StartCybranLandAttacks()
         Priority = 200,
         }
     )
-    opai:SetChildQuantity('LightTanks', 12)
+    opai:SetChildQuantity('HeavyBots', 12)
 
     opai = CybranM1Base:AddOpAI('BasicLandAttack', 'M1_Cybran_Land_Attack_UEF_4',
     {
@@ -75,6 +75,30 @@ function StartCybranLandAttacks()
         }
     )
     opai:SetChildQuantity('MobileFlak', 4)
+
+    opai = CybranM1Base:AddOpAI('BasicLandAttack', 'M1_Cybran_Land_Attack_UEF_5',
+    {
+    
+        MasterPlatoonFunction = {SPAIFileName, 'PatrolThread'},
+        PlatoonData = {
+            PatrolChain = 'M1_Cybran_Attack_UEF_1',
+        },
+        Priority = 175,
+        }
+    )
+    opai:SetChildQuantity('LightArtillery', 6)
+
+    opai = CybranM1Base:AddOpAI('BasicLandAttack', 'M1_Cybran_Land_Attack_UEF_6',
+    {
+    
+        MasterPlatoonFunction = {SPAIFileName, 'PatrolThread'},
+        PlatoonData = {
+            PatrolChain = 'M1_Cybran_Attack_UEF_1',
+        },
+        Priority = 190,
+        }
+    )
+    opai:SetChildQuantity('MobileBombs', 6)
 end
 
 function StartCybranAirAttacks()
@@ -140,4 +164,10 @@ function StartMiscAIStuff()
         Priority = 250,
     })
     opai:SetChildQuantity('T1Engineers', 4)
+end
+
+function DisableBase()
+    if(CybranM1Base) then
+        CybranM1Base:BaseActive(false)
+    end
 end
