@@ -53,8 +53,8 @@ Mission Description:
             Shoot down engineer drop from south base (this will cause one less enemy base in the final part)
 
         Unlocked Tech:
-            Railgun boat - 5 minutes into the mission
-            T2 Arty - 8 min into the mission
+            Railgun boat - 2 minutes into the mission
+            T2 Arty - 11 min into the mission
 
     Mission 3:
         Intro:
@@ -88,7 +88,8 @@ Mission Description:
             Destroy the Tempest before it's completed.
 
         Unlocked Tech:
-            TMD/TML - once player scouts enemy TML (on the north island)
+            TMD/TML - 1 min into the mission
+            Field Engineer - 7 min into the mission
     
     Outro:
         Cinematics at the ship leaving the planet.
@@ -340,8 +341,8 @@ M1P1Title = 'Protect the crashed ship'
 M1P1Description = 'Ensure the crashed ship survives.'
 
 -- Primary Objective
-M1P2Title = 'Destroy the southern Aeon base'
-M1P2Description = 'The Aeon units are sending attacks from this position. Destroy the base.'
+M1P2Title = 'Destroy the southern hostile base'
+M1P2Description = 'The enemy units are sending attacks from this position. Destroy the base.'
 
 -- Primary Objective
 M1P3Title = 'Collect resource deposits'
@@ -401,7 +402,7 @@ ThirdCrystalReclaimed = {
 
 -- Fourth crystal is reclaimed, arty satellite
 FourthCrystalReclaimed = {
-    {text = '[Nichols]: Fourth crystal reclaimed, get some more.', vid = 'N03_FourthCrystalReclaimed.sfd', bank = 'N03_VO', cue = 'FourthCrystalReclaimed', faction = 'UEF'},
+    {text = '[Nichols]: Fourth crystal reclaimed, arty is ready...', vid = 'N03_FourthCrystalReclaimed.sfd', bank = 'N03_VO', cue = 'FourthCrystalReclaimed', faction = 'UEF'},
 }
 
 -- All 5 crystals reclaimed, objective completed (map didnt expand yet)
@@ -468,6 +469,13 @@ M2EngieDropKilled = {
 
 
 
+-- Artillery gun ready again
+ArtilleryGunReady = {
+    {text = '[Nichols]: Sir, the artillery is ready again.', vid = 'N03_ArtilleryGunReady.sfd', bank = 'N03_VO', cue = 'ArtilleryGunReady', faction = 'UEF'},
+}
+
+
+
 -- Warn player about attack coming form the north/main base
 M2AttackWarning = {
     {text = '[Benson]: Massive attack incoming from the north...', vid = 'N03_M2AttackWarning.sfd', bank = 'N03_VO', cue = 'M2AttackWarning', faction = 'UEF'},
@@ -487,11 +495,27 @@ M2B1Description = 'You\'ve sunk over %s enemy Submarine Hunters.'
 M2B2Title = 'Supreme Attention'
 M2B2Description = 'You\'ve shot down engineers drop before they could establish a base.'
 
+-- Artillery Gun
+ArtilleryGunTitle = 'Artillery Strike'
+ArtilleryGunDescription = 'Mark an area for the artillery strike'
+
 
 
 ------------
 -- Mission 3
 ------------
+-- 
+M3Intro1 = {
+    {text = '[Nichols]: TODO.', vid = 'N03_M3Intro1.sfd', bank = 'N03_VO', cue = 'M3Intro1', faction = 'UEF'},
+}
+
+-- 
+M3Intro2 = {
+    {text = '[Nichols]: TODO.', vid = 'N03_M3Intro2.sfd', bank = 'N03_VO', cue = 'M3Intro2', faction = 'UEF'},
+}
+
+
+
 -- All attacking units dead
 M3PostIntro = {
     {text = '[Nichols]: Defeat the incoming units commander.', vid = 'N03_M3PostIntro.sfd', bank = 'N03_VO', cue = 'M3PostIntro', faction = 'UEF'},
@@ -660,6 +684,11 @@ M4TechUnlock2 = {
     {text = '[Benson]: Uploading blueprint for TML/TMD.', vid = 'N03_M4TechUnlock2.sfd', bank = 'N03_VO', cue = 'M4TechUnlock2', faction = 'UEF'},
 }
 
+-- Field Engie Unlocked
+M4FieldEngieUnlock = {
+    {text = '[Benson]: Field engie (has TMD) blueprint.', vid = 'N03_M4FieldEngieUnlock.sfd', bank = 'N03_VO', cue = 'M4FieldEngieUnlock', faction = 'UEF'},
+}
+
 
 
 -- Primary Objective
@@ -680,4 +709,55 @@ M4B1Description = 'You\'ve destroyed the Tempest before it was completed.'
 ---------
 -- Taunts
 ---------
+--[[
+-- Aeon taunt
+TAUNT = {
+    {text = '[Aeon]: Much taunt here.', vid = 'N03_TAUNT.sfd', bank = 'N03_VO', cue = 'TAUNT', faction = 'Aeon'},
+}
+
+-- Aeon taunt
+TAUNT = {
+    {text = '[Aeon]: Much taunt here.', vid = 'N03_TAUNT.sfd', bank = 'N03_VO', cue = 'TAUNT', faction = 'Aeon'},
+}
+
+-- Aeon taunt
+TAUNT = {
+    {text = '[Aeon]: Much taunt here.', vid = 'N03_TAUNT.sfd', bank = 'N03_VO', cue = 'TAUNT', faction = 'Aeon'},
+}
+
+-- Aeon taunt
+TAUNT = {
+    {text = '[Aeon]: Much taunt here.', vid = 'N03_TAUNT.sfd', bank = 'N03_VO', cue = 'TAUNT', faction = 'Aeon'},
+}
+
+-- Aeon taunt
+TAUNT = {
+    {text = '[Aeon]: Much taunt here.', vid = 'N03_TAUNT.sfd', bank = 'N03_VO', cue = 'TAUNT', faction = 'Aeon'},
+}
+
+-- Aeon taunt
+TAUNT = {
+    {text = '[Aeon]: Much taunt here.', vid = 'N03_TAUNT.sfd', bank = 'N03_VO', cue = 'TAUNT', faction = 'Aeon'},
+}
+
+-- Aeon taunt
+TAUNT = {
+    {text = '[Aeon]: Much taunt here.', vid = 'N03_TAUNT.sfd', bank = 'N03_VO', cue = 'TAUNT', faction = 'Aeon'},
+}
+
+-- Aeon taunt
+TAUNT = {
+    {text = '[Aeon]: Much taunt here.', vid = 'N03_TAUNT.sfd', bank = 'N03_VO', cue = 'TAUNT', faction = 'Aeon'},
+}
+
+-- Aeon taunt
+TAUNT = {
+    {text = '[Aeon]: Much taunt here.', vid = 'N03_TAUNT.sfd', bank = 'N03_VO', cue = 'TAUNT', faction = 'Aeon'},
+}
+
+-- Aeon taunt
+TAUNT = {
+    {text = '[Aeon]: Much taunt here.', vid = 'N03_TAUNT.sfd', bank = 'N03_VO', cue = 'TAUNT', faction = 'Aeon'},
+}
+--]]
 
