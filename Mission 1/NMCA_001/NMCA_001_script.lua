@@ -233,7 +233,7 @@ function M1NIS()
 	ScenarioFramework.Dialogue(OpStrings.IntroNIS_Dialogue, nil, true)
 	Cinematics.CameraMoveToMarker(ScenarioUtils.GetMarker('Cutscene_01a'), 0)
 	WaitSeconds(.5)
-	Cinematics.CameraTrackEntity(Engineer1, 40, 3)
+	--Cinematics.CameraTrackEntity(Engineer1, 40, 3)
 
 	WaitSeconds(7)
 
@@ -489,7 +489,7 @@ function M2Capture()
     ----------
     ScenarioUtils.CreateArmyGroup('UEF', 'PowerBase')
     ScenarioUtils.CreateArmyGroup('UEF', 'M3PWalls')
-    ScenarioInfo.Shields = ScenarioUtils.CreateArmyGroup('UEF', 'M3Shields')
+    ScenarioUtils.CreateArmyGroup('UEF', 'M3Shields')
 
     ----------
     -- Spawn Patrols
@@ -663,13 +663,7 @@ function M3()
     ScenarioInfo.M3S1:AddResultCallback(
         function(result)
             if(result) then
-                for _, v in ScenarioInfo.Shields do
-                    if not v:IsDead() then
-                        v:ToggleScriptBit('RULEUTC_ShieldToggle')
-                    else
-                        return
-                    end
-                end
+                M3BaseAI.DisableShields()
                 ScenarioFramework.Dialogue(OpStrings.M3ShieldsDead, nil, true)
             end
         end
