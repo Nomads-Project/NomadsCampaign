@@ -29,7 +29,7 @@ Objective 2:
 defend the loyal nomad outpost against the attacking nomad forces from the 3 supply bases
 secondary 2:
 evacuate the leading scientists (civil truck, controlable with a move ping like the megabot of brackman)
-evacuating them allows the nomad fleet to use a nearby asteroid field to cause some meteor shower on the nearest sera base in the last part of the mission
+evacuating them allows the nomad fleet to use a nearby asteroid field to cause some meteor shower on the nearest sera base in the last part of the mission (the scientists know about the existence and access codes of mining drones in the asteroid field and with their help you manage to bring some of them onto a collision course with the planet and hit one of the seraphim bases)
 
 #shortly before the last nomad supply base is destroyed, the jamming field in the loyal nomad colony is destroyed and they call for help
 
