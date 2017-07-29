@@ -438,7 +438,7 @@ M2BasesDestroyed = {
 
 -- Unlock Rail Boat
 M2RailBoatUnlock = {
-    {text = '[Benson]: Sonar surveillance shows that the Aeon deploy significant submarine forces in the area, we\'ve developed a new boat for you to counter them: The Rail boat, it\'s great against submarines.', vid = 'N03_M2RailBoatUnlock.sfd', bank = 'N03_VO', cue = 'M2RailBoatUnlock', faction = 'UEF'},
+    {text = '[Benson]: Sonar surveillance shows that the Aeon deploy significant submarine forces in the area, we\'ve developed a new boat for you to counter them: The Rail boat, it\'s great against these submarines.', vid = 'N03_M2RailBoatUnlock.sfd', bank = 'N03_VO', cue = 'M2RailBoatUnlock', faction = 'UEF'},
 }
 
 -- Unlock T2 Arty
@@ -487,8 +487,8 @@ M2AttackWarning = {
 
 
 -- Secondary Objective
-M2S1Title = 'Destroy 2 Aeon Bases to the west'
-M2S1Description = 'Eliminate the enemy bases before they develop into a problem.'
+M2S1Title = 'Destroy the Aeon Bases to the west'
+M2S1Description = 'Eliminate the enemy bases before they develop into a problem. Dont leave them unchecked for too long.'
 
 -- Bonus Objective
 M2B1Title = 'Kill T2 Subs'
@@ -500,7 +500,7 @@ M2B2Description = 'You\'ve shot down engineers drop before they could establish 
 
 -- Artillery Gun
 ArtilleryGunTitle = 'Artillery Strike'
-ArtilleryGunDescription = 'Mark an area for the orbital artillery strike.'
+ArtilleryGunDescription = 'Mark an area for the orbital artillery strike. The strike will be available again after a short cooldown.'
 
 
 
@@ -618,7 +618,7 @@ M4OrbicalCannonDestroyed4 = {
 }
 
 -- Reminder 1 to destroy the cannons
-M4OrbitalcannonsReminder1 = {
+M4OrbitalCannonsReminder1 = {
     {text = '[Nichols]: Sir, the orbital cannons are blocking us from escaping the planet, destroy them as soon as possible.', vid = 'N03_M4M4OrbitalCannonsReminder1.sfd', bank = 'N03_VO', cue = 'M4M4OrbitalCannonsReminder1', faction = 'UEF'},
 }
 
