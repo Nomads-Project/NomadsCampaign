@@ -1328,7 +1328,7 @@ function IntroMission3()
     -- Start attacks
     M3AeonAI.StartAttacks()
 
-    -- Orbital Canon Base
+    -- Orbital Cannon Base
     ScenarioUtils.CreateArmyGroup('Aeon', 'M3_Aeon_Orbital_Base_D' .. Difficulty)
     HandleT3Arties()
 
@@ -1600,8 +1600,8 @@ function StartMission3()
     -----------
     -- Triggers
     -----------
-    -- Objective to locate Orbital Canons
-    ScenarioFramework.CreateTimerTrigger(M3LocateOrbitalCanons, 30)
+    -- Objective to locate Orbital Cannons
+    ScenarioFramework.CreateTimerTrigger(M3LocateOrbitalCannons, 30)
 
     -- Unlock RAS
     ScenarioFramework.CreateTimerTrigger(M3RASUnlock, 2*60)
@@ -1630,12 +1630,12 @@ function StartMission3()
     end
 end
 
-function M3LocateOrbitalCanons()
-    ScenarioFramework.Dialogue(OpStrings.M3LocateOrbitalCanons, nil, true)
+function M3LocateOrbitalCannons()
+    ScenarioFramework.Dialogue(OpStrings.M3LocateOrbitalCannons, nil, true)
 
     local units = ArmyBrains[Aeon]:GetListOfUnits(categories.uab2302, false)
     --------------------------------------------
-    -- Primary Objective - Locate Orbital Canons
+    -- Primary Objective - Locate Orbital Cannons
     --------------------------------------------
     ScenarioInfo.M3P2 = Objectives.Locate(
         'primary',
@@ -1649,7 +1649,7 @@ function M3LocateOrbitalCanons()
     ScenarioInfo.M3P2:AddResultCallback(
         function(result)
             if result then
-                ScenarioFramework.Dialogue(OpStrings.M3OrbitalCanonSpotted, M3MapExpansionTimer, true)
+                ScenarioFramework.Dialogue(OpStrings.M3OrbitalCannonSpotted, M3MapExpansionTimer, true)
             end
         end
     )
@@ -1750,7 +1750,7 @@ function IntroMission4()
     -- North Orbital Base
     M4AeonAI.AeonM4OrbitalBaseNorthAI()
 
-    -- South Orbital Base, if player didn't catch the transport in M2, else just Orbital Canon with few defenses
+    -- South Orbital Base, if player didn't catch the transport in M2, else just Orbital Cannon with few defenses
     if not ScenarioInfo.M2EngineersKilled then
         M4AeonAI.AeonM4OrbitalBaseSouthAI()
     else
@@ -1789,8 +1789,8 @@ function IntroMission4()
     ArmyBrains[Aeon]:GiveResource('MASS', num[Difficulty])
     ArmyBrains[Aeon]:GiveResource('ENERGY', 30000)
 
-    -- Tell player to destroy the orbital canons
-    ScenarioFramework.Dialogue(OpStrings.M4DestroyCanons, StartMission4, true)
+    -- Tell player to destroy the orbital cannons
+    ScenarioFramework.Dialogue(OpStrings.M4DestroyCannons, StartMission4, true)
 end
 
 function M4TMLOutpost(location)
@@ -1835,7 +1835,7 @@ end
 
 function StartMission4()
     ---------------------------------------------
-    -- Primary Objective - Destroy Orbital Canons
+    -- Primary Objective - Destroy Orbital Cannons
     ---------------------------------------------
     ScenarioInfo.M4P1 = Objectives.CategoriesInArea(
         'primary',
@@ -1881,23 +1881,23 @@ function StartMission4()
     ScenarioInfo.M4P1:AddProgressCallback(
         function(current, total)
             if current == 1 then
-                ScenarioFramework.Dialogue(OpStrings.M4OrbicalCanonDestroyed1)
+                ScenarioFramework.Dialogue(OpStrings.M4OrbicalCannonDestroyed1)
             elseif current == 2 then
-                ScenarioFramework.Dialogue(OpStrings.M4OrbicalCanonDestroyed2)
+                ScenarioFramework.Dialogue(OpStrings.M4OrbicalCannonDestroyed2)
             elseif current == 3 then
-                ScenarioFramework.Dialogue(OpStrings.M4OrbicalCanonDestroyed3)
+                ScenarioFramework.Dialogue(OpStrings.M4OrbicalCannonDestroyed3)
             end
         end
     )
     ScenarioInfo.M4P1:AddResultCallback(
         function(result)
             if result then
-                ScenarioFramework.Dialogue(OpStrings.M4OrbicalCanonDestroyed4, nil, true)
+                ScenarioFramework.Dialogue(OpStrings.M4OrbicalCannonDestroyed4, nil, true)
             end
         end
     )
 
-    -- Objective group to handle winning, Orbital canons and reclaiming crystals
+    -- Objective group to handle winning, Orbital cannons and reclaiming crystals
     ScenarioInfo.M4Objectives = Objectives.CreateGroup('M4Objectives', PlayerWin)
     ScenarioInfo.M4Objectives:AddObjective(ScenarioInfo.M4P1)
     if ScenarioInfo.M1P3.Active then
@@ -2155,13 +2155,13 @@ end
 
 function M3P2Reminder()
     if ScenarioInfo.M3P2.Active then
-        ScenarioFramework.Dialogue(OpStrings.M3LocateCanonsReminder)
+        ScenarioFramework.Dialogue(OpStrings.M3LocateCannonsReminder)
     end
 end
 
 function M4P1Reminder1()
     if ScenarioInfo.M4P1.Active then
-        ScenarioFramework.Dialogue(OpStrings.M4OrbitalCanonsReminder1)
+        ScenarioFramework.Dialogue(OpStrings.M4OrbitalCannonsReminder1)
 
         ScenarioFramework.CreateTimerTrigger(M4P1Reminder2, 20*60)
     end
@@ -2169,7 +2169,7 @@ end
 
 function M4P1Reminder2()
     if ScenarioInfo.M4P1.Active then
-        ScenarioFramework.Dialogue(OpStrings.M4OrbitalCanonsReminder2)
+        ScenarioFramework.Dialogue(OpStrings.M4OrbitalCannonsReminder2)
     end
 end
 
