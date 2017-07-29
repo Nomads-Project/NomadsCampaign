@@ -484,7 +484,7 @@ end
 ---------------------
 function AeonM2SouthBaseAI(location)
     AeonM2SouthBase:InitializeDifficultyTables(ArmyBrains[Aeon], 'M2_Aeon_South_Base', 'M2_Aeon_South_Base_Marker', 120, {M2_Aeon_South_Base = 100})
-    AeonM2SouthBase:StartNonZeroBase({{8, 10, 11}, {7, 8, 9}})
+    AeonM2SouthBase:StartNonZeroBase({{7, 9, 11}, {6, 7, 9}})
     AeonM2SouthBase:SetActive('AirScouting', true)
     AeonM2SouthBase:SetActive('LandScouting', true)
     AeonM2SouthBase:AddBuildGroupDifficulty('M2_Aeon_South_Base_Support_Factories', 100, true)

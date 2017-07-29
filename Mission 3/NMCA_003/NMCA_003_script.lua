@@ -12,11 +12,12 @@ local M2AeonAI = import('/maps/NMCA_003/NMCA_003_M2AeonAI.lua')
 local M3AeonAI = import('/maps/NMCA_003/NMCA_003_M3AeonAI.lua')
 local M4AeonAI = import('/maps/NMCA_003/NMCA_003_M4AeonAI.lua')
 local OpStrings = import('/maps/NMCA_003/NMCA_003_strings.lua')
+local PingGroups = import('/lua/ScenarioFramework.lua').PingGroups
 local ScenarioFramework = import('/lua/ScenarioFramework.lua')
 local ScenarioPlatoonAI = import('/lua/ScenarioPlatoonAI.lua')
 local ScenarioUtils = import('/lua/sim/ScenarioUtilities.lua')
 local TauntManager = import('/lua/TauntManager.lua')
--- local Weather = import('/lua/weather.lua') -- TODO: Add some clouds on the map
+local Weather = import('/lua/weather.lua')
    
 ----------
 -- Globals
@@ -143,7 +144,6 @@ local NicholsTM = TauntManager.CreateTauntManager('NicholsTM', '/maps/NMCA_003/N
 local SkipNIS1 = false
 local SkipNIS2 = false
 local SkipNIS3 = false
-local SkipNIS4 = false
 
 -----------
 -- Start up
@@ -152,7 +152,7 @@ function OnPopulate(self)
     ScenarioUtils.InitializeScenarioArmies()
     LeaderFaction, LocalFaction = ScenarioFramework.GetLeaderAndLocalFactions()
 
-    -- Weather.CreateWeather()
+    Weather.CreateWeather()
     
     ----------
     -- Aeon AI
@@ -220,7 +220,6 @@ end
 
 function OnStart(self)
     -- Set Unit Restrictions
-    -- TODO: Unlock Field Engineer at some point
     ScenarioFramework.AddRestrictionForAllHumans(
         categories.TECH3 +
         categories.EXPERIMENTAL +
@@ -740,6 +739,8 @@ function M1CrystalsObjective()
                 ScenarioFramework.Dialogue(OpStrings.ThirdCrystalReclaimed, nil, true)
             elseif current == 4 then
                 -- Atry satellite
+                ForkThread(SpawnArtillery)
+
                 ScenarioFramework.Dialogue(OpStrings.FourthCrystalReclaimed, nil, true)
             end
         end
@@ -1534,6 +1535,37 @@ function IntroMission3NIS()
     ScenarioFramework.SetPlayableArea('M3_Area', true)
 
     if not SkipNIS3 then
+        Cinematics.EnterNISMode()
+
+        ScenarioFramework.Dialogue(OpStrings.M3Intro1, nil, true)
+        WaitSeconds(1)
+
+        -- Vision for NIS location
+        local VisMarker1 = ScenarioFramework.CreateVisibleAreaLocation(40, 'VizMarker_3', 0, ArmyBrains[Player1])
+        local VisMarker2 = ScenarioFramework.CreateVisibleAreaLocation(50, 'VizMarker_4', 0, ArmyBrains[Player1])
+        local VisMarker3 = ScenarioFramework.CreateVisibleAreaLocation(50, 'VizMarker_5', 0, ArmyBrains[Player1])
+
+        --Cinematics.CameraTrackEntity(ScenarioInfo.UnitNames[Aeon]['M3_NIS_Unit_1'], 30, 3)
+        
+        Cinematics.CameraMoveToMarker('Cam_M3_Intro_1', 4)
+
+        WaitSeconds(2)
+
+        --Cinematics.CameraTrackEntity(ScenarioInfo.UnitNames[Aeon]['M3_NIS_Unit_2'], 30, 2)
+        ScenarioFramework.Dialogue(OpStrings.M3Intro2, nil, true)
+        Cinematics.CameraMoveToMarker('Cam_M3_Intro_2', 4)
+
+        WaitSeconds(2)
+
+        Cinematics.CameraMoveToMarker('Cam_M3_Intro_3', 2)
+
+        VisMarker1:Destroy()
+        VisMarker2:Destroy()
+        VisMarker3:Destroy()
+
+        WaitSeconds(1)
+
+        Cinematics.ExitNISMode()
     end
 
     StartMission3()
@@ -1883,6 +1915,17 @@ function StartMission4()
     -----------
     -- Secondary objective to kill Tempest
     ScenarioFramework.CreateArmyIntelTrigger(M4SecondaryKillTempest, ArmyBrains[Player1], 'LOSNow', false, true, categories.uas0401, true, ArmyBrains[Aeon])
+
+    ScenarioFramework.CreateTimerTrigger(M4UnlockFiendEngie, 7*60)
+end
+
+function M4UnlockFiendEngie()
+    local function Unlock()
+        ScenarioFramework.RemoveRestrictionForAllHumans(categories.inu3008, true)
+    end
+
+    -- First play the dialogue, then unlock
+    ScenarioFramework.Dialogue(OpStrings.M4FieldEngieUnlock, Unlock)
 end
 
 function M4BuildTempest()
@@ -2214,6 +2257,62 @@ function HandleT3Arties()
     end
 end
 
+function SpawnArtillery()
+    -- More storage for arty reload
+    ArmyBrains[Crashed_Ship]:GiveStorage('ENERGY', 100000)
+    ArmyBrains[Crashed_Ship]:GiveResource('ENERGY', 100000)
+
+    -- Spawn arty
+    ScenarioInfo.ArtilleryGun = ScenarioUtils.CreateArmyUnit('Crashed_Ship', 'Orbital_Artillery')
+    ScenarioInfo.ArtilleryGun:SetCanTakeDamage(false)
+    ScenarioInfo.ArtilleryGun:SetCanBeKilled(false)
+    ScenarioInfo.ArtilleryGun:SetDoNotTarget(true)
+    ScenarioInfo.ArtilleryGun:SetIntelRadius('Vision', 0)
+    ScenarioInfo.ArtilleryGun:SetFireState('HoldFire')
+
+    -- Wait for the satellite to spawn
+    while not ScenarioInfo.ArtilleryGun.ArtilleryUnit do
+        WaitSeconds(1)
+    end
+
+    -- Teleport it to the crashed ship
+    Warp(ScenarioInfo.ArtilleryGun.ArtilleryUnit, ScenarioUtils.MarkerToPosition('Artillery_Marker'))
+
+    -- Set up attack ping for players
+    SetUpArtilleryPing(true)
+end
+
+function SetUpArtilleryPing(skipDialogue)
+    if not skipDialogue then
+        ScenarioFramework.Dialogue(OpStrings.ArtilleryGunReady)
+    end
+
+    ScenarioInfo.AttackPing = PingGroups.AddPingGroup(OpStrings.ArtilleryGunTitle, nil, 'attack', OpStrings.ArtilleryGunDescription)
+    ScenarioInfo.AttackPing:AddCallback(ArtilleryAttackLocation)
+end
+
+function ArtilleryAttackLocation(location)
+    ForkThread(
+        function(location)
+            ScenarioInfo.ArtilleryGun:SetFireState('ReturnFire')
+
+            IssueStop({ScenarioInfo.ArtilleryGun})
+            IssueClearCommands({ScenarioInfo.ArtilleryGun})
+
+            IssueAttack({ScenarioInfo.ArtilleryGun}, location)
+
+            ScenarioInfo.AttackPing:Destroy()
+
+            WaitSeconds(40)
+
+            ScenarioInfo.ArtilleryGun:SetFireState('HoldFire')
+
+            ScenarioFramework.CreateTimerTrigger(SetUpArtilleryPing, 5*60)
+        end, location
+    )
+end
+
+
 -- Functions for randomly picking scenarios
 function ChooseRandomBases()
     local data = ScenarioInfo.OperationScenarios['M' .. ScenarioInfo.MissionNumber].Bases
@@ -2315,7 +2414,7 @@ function OnCtrlF4()
 end
 
 function OnShiftF3()
-    ForkThread(PlayerWin)
+    ForkThread(SpawnArtillery)
 end
 
 function OnShiftF4()
