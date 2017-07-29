@@ -60,14 +60,14 @@ Mission Description:
         Intro:
             Cinematics at the incoming attack from the main base (north-west).
 
-            Frist orbital canon will be on the north island.
+            Frist orbital cannon will be on the north island.
 
         Primary:
             Defend the Aeon counter attack.
 
-            After a momnet another primary objective to locate the orbital canons is assigned.
+            After a momnet another primary objective to locate the orbital cannons is assigned.
 
-            When both counter attack and orbital canon is located the map will expand to the last part.
+            When both counter attack and orbital cannon is located the map will expand to the last part.
 
         Secondary:
             Defeat the enemy ACU, once player scouts it.
@@ -77,7 +77,7 @@ Mission Description:
 
     Mission 4:
         Primary:
-            Destroy 4 Orbital canon bases.
+            Destroy 4 Orbital cannon bases.
             North one has a base with the tempest, South one is spawned depending on if the engineer drop in M2 was shot down or not.
 
         Secondary:
@@ -98,7 +98,7 @@ Mission Description:
 
 
 OPERATION_NAME = 'Frosty Winds'
-OPERATION_DESCRIPTION = 'Nomads mission3' -- TODO: Proper mission description
+OPERATION_DESCRIPTION = 'Long range communications picked up an emergency signal from a nearby supply fleet that was on it\'s way to meet with your expedition group. Head to the coordinates the of the emergency signal and try to retrieve the ships and their crew. Don\'t let it fall into enemy hands, vital informations like the coordinates of the nomad home world may still be in the data core of the ship.' -- TODO: Proper mission description
 
 
 
@@ -138,7 +138,9 @@ PlayerDies1 = {
 
 -- 
 PlayerWin1 = {
-    {text = '[Nichols]: The ship is ready to leave.', vid = 'N03_PlayerWin1.sfd', bank = 'N03_VO', cue = 'PlayerWin1', faction = 'UEF'},
+    {text = '[Nichols]: Area secured, all orbital cannons are offline.', vid = 'N03_PlayerWin1.sfd', bank = 'N03_VO', cue = 'PlayerWin1', faction = 'UEF'},
+    {text = '[Benson]: All systems of the ship are functional, powering up the engines.', vid = 'N03_PlayerWin2.sfd', bank = 'N03_VO', cue = 'PlayerWin2', faction = 'UEF'},
+    {text = '[Nichols]: The ship is ready to leave.', vid = 'N03_PlayerWin3.sfd', bank = 'N03_VO', cue = 'PlayerWin3', faction = 'UEF'},
 }
 
 
@@ -166,7 +168,7 @@ M1Intro3 = {
 
 -- Assign primary objectives, protect ship, kill aeon base
 M1PostIntro = {
-    {text = '[Benson]: Commander, there are unidentified units closing in on your position. Secure the area and defend the ship.', vid = 'N03_M1PostIntro_1.sfd', bank = 'N03_VO', cue = 'M1PostIntro_1', faction = 'UEF'},
+    {text = '[Nichols]: Commander, there are unidentified units closing in on your position. Secure the area and defend the ship.', vid = 'N03_M1PostIntro_1.sfd', bank = 'N03_VO', cue = 'M1PostIntro_1', faction = 'UEF'},
     {text = '[Nichols]: Establish a base and send a platoon south to destroy the hostile base.', vid = 'N03_M1PostIntro_2.sfd', bank = 'N03_VO', cue = 'M1PostIntro_2', faction = 'UEF'},
 }
 
@@ -303,13 +305,13 @@ FirstCrystalReclaimed = {
 
 -- Second crystal reclaimed, resource bonus, map expands to the second part
 SecondCrystalReclaimed1 = {
-    {text = '[Benson]: More systems on the ship are coming online sir. The ship is now able to produce more resources, the overflow will go to you.', vid = 'N03_SecondCrystalReclaimed1_1.sfd', bank = 'N03_VO', cue = 'SecondCrystalReclaimed1_1', faction = 'UEF'},
+    {text = '[Benson]: More systems on the ship are coming online sir. The ship is now able to produce more resources, they are transfered to you.', vid = 'N03_SecondCrystalReclaimed1_1.sfd', bank = 'N03_VO', cue = 'SecondCrystalReclaimed1_1', faction = 'UEF'},
     {text = '[Benson]: But we will need more minerals to fully repair the ship. I\'m scanning the area for more deposits.', vid = 'N03_SecondCrystalReclaimed1_2.sfd', bank = 'N03_VO', cue = 'SecondCrystalReclaimed1_2', faction = 'UEF', delay = 5},
 }
 
 -- Second crystal reclaimed, resource bonus, map doesn't expand
 SecondCrystalReclaimed2 = {
-    {text = '[Benson]: More systems on the ship are coming online sir. The ship is now able to produce more resources, the overflow will go to you.', vid = 'N03_SecondCrystalReclaimed2.sfd', bank = 'N03_VO', cue = 'SecondCrystalReclaimed2', faction = 'UEF'},
+    {text = '[Benson]: More systems on the ship are coming online sir. The ship is now able to produce more resources, they are transfered to you.', vid = 'N03_SecondCrystalReclaimed2.sfd', bank = 'N03_VO', cue = 'SecondCrystalReclaimed2', faction = 'UEF'},
 }
 
 
@@ -338,7 +340,7 @@ M1MapExpansion = {
 
 -- Primary Objective
 M1P1Title = 'Protect the crashed ship'
-M1P1Description = 'Ensure the crashed ship survives.'
+M1P1Description = 'Ensure that the crashed ship survives. The aeon forces will try to take it out.'
 
 -- Primary Objective
 M1P2Title = 'Destroy the southern hostile base'
@@ -376,7 +378,7 @@ M2Intro1 = {
 
 -- Move camera to the middle crystal
 M2Intro2 = {
-    {text = '[Benson]: Start by going to the west. There are 3 more crystals in this area that we need.', vid = 'N03_M2Intro2.sfd', bank = 'N03_VO', cue = 'M2Intro2', faction = 'UEF'},
+    {text = '[Benson]: Start by going to the west. There are 3 additional crystals in this area that we need.', vid = 'N03_M2Intro2.sfd', bank = 'N03_VO', cue = 'M2Intro2', faction = 'UEF'},
 }
 
 -- Look at the north Aeon base
@@ -402,14 +404,15 @@ ThirdCrystalReclaimed = {
 
 -- Fourth crystal is reclaimed, arty satellite
 FourthCrystalReclaimed = {
-    {text = '[Nichols]: Fourth crystal reclaimed, arty is ready...', vid = 'N03_FourthCrystalReclaimed.sfd', bank = 'N03_VO', cue = 'FourthCrystalReclaimed', faction = 'UEF'},
+    {text = '[Nichols]: Fourth crystal reclaimed, the ballistic computers and target relays of the ship are coming online again. It can now control an orbital support statellite.', vid = 'N03_FourthCrystalReclaimed.sfd', bank = 'N03_VO', cue = 'FourthCrystalReclaimed', faction = 'UEF'},
+    {text = '[Nichols]: The satellite is equipped with long range weapons. Pinpoint a target to launch an orbital strike.', vid = 'N03_FourthCrystalReclaimed2.sfd', bank = 'N03_VO', cue = 'FourthCrystalReclaimed2', faction = 'UEF'},    
 }
 
 -- All 5 crystals reclaimed, objective completed (map didnt expand yet)
 AllCrystalReclaimed1 = {
     {text = '[Nichols]: All mineral deposits are reclaimed, well done.', vid = 'N03_AllCrystalReclaimed1_1.sfd', bank = 'N03_VO', cue = 'AllCrystalReclaimed1_1', faction = 'UEF'},
     {text = '[Benson]: The ship\'s systems are working and it\'s ready to leave the planet.', vid = 'N03_AllCrystalReclaimed1_2.sfd', bank = 'N03_VO', cue = 'AllCrystalReclaimed1_2', faction = 'UEF'},
-    {text = '[Nichols]: We will have to deal with the orbital canons now so we can lea...', vid = 'N03_AllCrystalReclaimed1_3.sfd', bank = 'N03_VO', cue = 'AllCrystalReclaimed1_3', faction = 'UEF'},
+    {text = '[Nichols]: We will have to deal with the orbital cannons now so we can lea...', vid = 'N03_AllCrystalReclaimed1_3.sfd', bank = 'N03_VO', cue = 'AllCrystalReclaimed1_3', faction = 'UEF'},
     {text = '[Nichols]: Sir, we\'re picking up a lot of enemy signatures incoming from the north-west. Regroup your units and defend the ship.', vid = 'N03_AllCrystalReclaimed1_4.sfd', bank = 'N03_VO', cue = 'AllCrystalReclaimed1_4', faction = 'UEF'},
 }
 
@@ -423,7 +426,7 @@ AllCrystalReclaimed2 = {
 
 -- One Aeon Bases destroyed
 M2OneBaseDestroyed = {
-    {text = '[Nichols]: First west base destroyed.', vid = 'N03_M2OneBaseDestroyed.sfd', bank = 'N03_VO', cue = 'M2OneBaseDestroyed', faction = 'UEF'},
+    {text = '[Nichols]: First base on the west is destroyed.', vid = 'N03_M2OneBaseDestroyed.sfd', bank = 'N03_VO', cue = 'M2OneBaseDestroyed', faction = 'UEF'},
 }
 
 -- Both Aeon Bases destroyed, secondary obj done
@@ -435,7 +438,7 @@ M2BasesDestroyed = {
 
 -- Unlock Rail Boat
 M2RailBoatUnlock = {
-    {text = '[Benson]: Aeon have a lot of submarines in the area, we\'ve developed a new boat for you to counter them, Rail boat, great against submarines.', vid = 'N03_M2RailBoatUnlock.sfd', bank = 'N03_VO', cue = 'M2RailBoatUnlock', faction = 'UEF'},
+    {text = '[Benson]: Sonar surveillance shows that the Aeon deploy significant submarine forces in the area, we\'ve developed a new boat for you to counter them: The Rail boat, it\'s great against submarines.', vid = 'N03_M2RailBoatUnlock.sfd', bank = 'N03_VO', cue = 'M2RailBoatUnlock', faction = 'UEF'},
 }
 
 -- Unlock T2 Arty
@@ -447,7 +450,7 @@ M2T2ArtyUnlock = {
 
 -- Dialogue after 6 min
 M2Dialogue = {
-    {text = '[Benson]: We\'re detecting increasing enemy activity, we don\' know what they are up to but you better hurry up.', vid = 'N03_M2Dialogue.sfd', bank = 'N03_VO', cue = 'M2Dialogue', faction = 'UEF'},
+    {text = '[Benson]: We\'re detecting increasing enemy activity, we don\'t know what they are up to but you better hurry up.', vid = 'N03_M2Dialogue.sfd', bank = 'N03_VO', cue = 'M2Dialogue', faction = 'UEF'},
 }
 
 -- Before the enemy ACU is shown
@@ -464,7 +467,7 @@ M2ACUNIS2 = {
 
 -- Bonus obj done, engineer drop killed
 M2EngieDropKilled = {
-    {text = '[Benson]: Enemy transport is down. Good catch commander.', vid = 'N03_M2EngieDropKilled.sfd', bank = 'N03_VO', cue = 'M2EngieDropKilled', faction = 'UEF'},
+    {text = '[Nichols]: Enemy transport is down. Good catch commander.', vid = 'N03_M2EngieDropKilled.sfd', bank = 'N03_VO', cue = 'M2EngieDropKilled', faction = 'UEF'},
 }
 
 
@@ -485,7 +488,7 @@ M2AttackWarning = {
 
 -- Secondary Objective
 M2S1Title = 'Destroy 2 Aeon Bases to the west'
-M2S1Description = 'TODO.'
+M2S1Description = 'Eliminate the enemy bases before they develop into a problem.'
 
 -- Bonus Objective
 M2B1Title = 'Kill T2 Subs'
@@ -497,7 +500,7 @@ M2B2Description = 'You\'ve shot down engineers drop before they could establish 
 
 -- Artillery Gun
 ArtilleryGunTitle = 'Artillery Strike'
-ArtilleryGunDescription = 'Mark an area for the artillery strike'
+ArtilleryGunDescription = 'Mark an area for the orbital artillery strike.'
 
 
 
@@ -506,48 +509,48 @@ ArtilleryGunDescription = 'Mark an area for the artillery strike'
 ------------
 -- 
 M3Intro1 = {
-    {text = '[Nichols]: TODO.', vid = 'N03_M3Intro1.sfd', bank = 'N03_VO', cue = 'M3Intro1', faction = 'UEF'},
+    {text = '[Nichols]: Sir! There is high activity coming from the north. Significant forces are approaching.', vid = 'N03_M3Intro1.sfd', bank = 'N03_VO', cue = 'M3Intro1', faction = 'UEF'},
 }
 
 -- 
 M3Intro2 = {
-    {text = '[Nichols]: TODO.', vid = 'N03_M3Intro2.sfd', bank = 'N03_VO', cue = 'M3Intro2', faction = 'UEF'},
+    {text = '[Nichols]: Defend your position and keep the ship alive!', vid = 'N03_M3Intro2.sfd', bank = 'N03_VO', cue = 'M3Intro2', faction = 'UEF'},  --TODO improve the text
 }
 
 
 
 -- All attacking units dead
 M3PostIntro = {
-    {text = '[Nichols]: Defeat the incoming units commander.', vid = 'N03_M3PostIntro.sfd', bank = 'N03_VO', cue = 'M3PostIntro', faction = 'UEF'},
+    {text = '[Nichols]: Defeat the incoming units and protect the ship, commander.', vid = 'N03_M3PostIntro.sfd', bank = 'N03_VO', cue = 'M3PostIntro', faction = 'UEF'},
 }
 
 -- All attacking units dead
 M3CounterAttackDefeated = {
-    {text = '[Nichols]: Enemy forces defeated.', vid = 'N03_M3CounterAttackDefeated.sfd', bank = 'N03_VO', cue = 'M3CounterAttackDefeated', faction = 'UEF'},
+    {text = '[Nichols]: Enemy forces defeated. Proceed with collecting the crystals.', vid = 'N03_M3CounterAttackDefeated.sfd', bank = 'N03_VO', cue = 'M3CounterAttackDefeated', faction = 'UEF'},
 }
 
 
 
--- Obj to locate orbital canons
-M3LocateOrbitalCanons = {
-    {text = '[Nichols]: Commander, you need to find the orbital canons that shot down the ship. We will need to destroy they them before we can leave the planet', vid = 'N03_M3LocateOrbitalCanons.sfd', bank = 'N03_VO', cue = 'M3LocateOrbitalCanons', faction = 'UEF'},
+-- Obj to locate orbital cannons
+M3LocateOrbitalCannons = {
+    {text = '[Nichols]: Commander, you need to find the orbital cannons that shot down the ship. We will need to destroy they them before we can leave the planet', vid = 'N03_M3LocateOrbitalCannons.sfd', bank = 'N03_VO', cue = 'M3LocateOrbitalCannons', faction = 'UEF'},
 }
 
--- Player sees orbital canon
-M3OrbitalCanonSpotted = {
-    {text = '[Nichols]: There\'s the orbital canon that shot down the ship.', vid = 'N03_M3OrbitalCanonSpotted.sfd', bank = 'N03_VO', cue = 'M3OrbitalCanonSpotted', faction = 'UEF'},
+-- Player sees orbital cannon
+M3OrbitalCannonSpotted = {
+    {text = '[Nichols]: There\'s the orbital cannon that shot down the ship.', vid = 'N03_M3OrbitalCannonSpotted.sfd', bank = 'N03_VO', cue = 'M3OrbitalCannonSpotted', faction = 'UEF'},
 }
 
--- Remind player to locate the canons
-M3LocateCanonsReminder = {
-    {text = '[Nichols]: Commander, you need to locate the orbital canons.', vid = 'N03_M3LocateCanonsReminder.sfd', bank = 'N03_VO', cue = 'M3LocateCanonsReminder', faction = 'UEF'},
+-- Remind player to locate the cannons
+M3LocateCannonsReminder = {
+    {text = '[Nichols]: Commander, you need to locate the orbital cannons.', vid = 'N03_M3LocateCannonsReminder.sfd', bank = 'N03_VO', cue = 'M3LocateCannonsReminder', faction = 'UEF'},
 }
 
 
 
--- Just before map expands to the last part with more Orbital Canons
+-- Just before map expands to the last part with more Orbital Cannons
 M3MapExpansion = {
-    {text = '[Nichols]: Sir, this isn\'t the only Orbital Canon in the area. We\'re picking up more to the east.', vid = 'N03_M3MapExpansion.sfd', bank = 'N03_VO', cue = 'M3MapExpansion', faction = 'UEF'},
+    {text = '[Nichols]: Sir, this isn\'t the only orbital cannon in the area. We\'re picking up more to the east.', vid = 'N03_M3MapExpansion.sfd', bank = 'N03_VO', cue = 'M3MapExpansion', faction = 'UEF'},
 }
 
 
@@ -566,7 +569,7 @@ M3Secondary = {
 
 -- ACU killed, obj done
 M3SecondaryDone = {
-    {text = '[Nichols]: The enemy ACU is gone.', vid = 'N03_M3SecondaryDone.sfd', bank = 'N03_VO', cue = 'M3SecondaryDone', faction = 'UEF'},
+    {text = '[Nichols]: The enemy ACU is gone. The base on the north west ceased all operations.', vid = 'N03_M3SecondaryDone.sfd', bank = 'N03_VO', cue = 'M3SecondaryDone', faction = 'UEF'},
 }
 
 
@@ -576,59 +579,59 @@ M3P1Title = 'Survive Aeon Counter Attack'
 M3P1Description = 'Aeon forces just launched a major attack at your position. Defeat all incoming units and continue with the operation.'
 
 -- Primary Objective
-M3P2Title = 'Locate Orbital Canons'
-M3P2Description = 'The Orbital Canons need to be someewhere in this area. Send scouts to find them.'
+M3P2Title = 'Locate Orbital Cannons'
+M3P2Description = 'The orbital cannons need to be someewhere in this area. Send scouts to find them.'
 
 -- Secondary Objective
 M3S1Title = 'Defeat Aeon ACU'
-M3S1Description = 'TODO.'
+M3S1Description = 'Eliminate the Aeon commander to secure the north west part of the operation area.'
 
 
 
 ------------
 -- Mission 4
 ------------
--- Assign obj to kill orbital canons
-M4DestroyCanons = {
-    {text = '[Nichols]: Sir, our scans revealed that there are 4 outposts with Orbital Canons, you will have to destroy them all so we can leave this planet.', vid = 'N03_M4DestroyCanons_1.sfd', bank = 'N03_VO', cue = 'M4DestroyCanons_1', faction = 'UEF'},
-    {text = '[Benson]: I\'ve marked the outposts\' location on the map for you sir.', vid = 'N03_M4DestroyCanons_2.sfd', bank = 'N03_VO', cue = 'M4DestroyCanons_2', faction = 'UEF'},
+-- Assign obj to kill orbital cannons
+M4DestroyCannons = {
+    {text = '[Nichols]: Sir, our scans revealed that there are 4 outposts with orbital cannons, you will have to destroy them all so we can leave this planet.', vid = 'N03_M4DestroyCannons_1.sfd', bank = 'N03_VO', cue = 'M4DestroyCannons_1', faction = 'UEF'},
+    {text = '[Benson]: I\'ve marked the outposts\' location on the map for you sir.', vid = 'N03_M4DestroyCannons_2.sfd', bank = 'N03_VO', cue = 'M4DestroyCannons_2', faction = 'UEF'},
 }
 
--- First orbital canon position destroyed
-M4OrbicalCanonDestroyed1 = {
-    {text = '[Nichols]: First Orbital Canon position destroyed.', vid = 'N03_M4OrbicalCanonDestroyed1.sfd', bank = 'N03_VO', cue = 'M4OrbicalCanonDestroyed1', faction = 'UEF'},
+-- First orbital cannon position destroyed
+M4OrbicalCannonDestroyed1 = {
+    {text = '[Nichols]: First orbital cannon position destroyed.', vid = 'N03_M4OrbicalCannonDestroyed1.sfd', bank = 'N03_VO', cue = 'M4OrbicalCannonDestroyed1', faction = 'UEF'},
 }
 
--- Second orbital canon position destroyed
-M4OrbicalCanonDestroyed2 = {
-    {text = '[Nichols]: Another Orbital Canon position has been destroyed, keep up the good work sir.', vid = 'N03_M4OrbicalCanonDestroyed2.sfd', bank = 'N03_VO', cue = 'M4OrbicalCanonDestroyed2', faction = 'UEF'},
+-- Second orbital cannon position destroyed
+M4OrbicalCannonDestroyed2 = {
+    {text = '[Nichols]: Another orbital cannon position has been destroyed, keep up the good work sir.', vid = 'N03_M4OrbicalCannonDestroyed2.sfd', bank = 'N03_VO', cue = 'M4OrbicalCannonDestroyed2', faction = 'UEF'},
 }
 
--- Third orbital canon position destroyed
-M4OrbicalCanonDestroyed3 = {
-    {text = '[Nichols]: Third Orbital Canon position is down, just one more to go.', vid = 'N03_M4OrbicalCanonDestroyed3.sfd', bank = 'N03_VO', cue = 'M4OrbicalCanonDestroyed3', faction = 'UEF'},
+-- Third orbital cannon position destroyed
+M4OrbicalCannonDestroyed3 = {
+    {text = '[Nichols]: Third orbital cannon position is down, just one more to go.', vid = 'N03_M4OrbicalCannonDestroyed3.sfd', bank = 'N03_VO', cue = 'M4OrbicalCannonDestroyed3', faction = 'UEF'},
 }
 
--- All orbital canon positions destroyed
-M4OrbicalCanonDestroyed4 = {
-    {text = '[Nichols]: That\'s all of them, good job sir.', vid = 'N03_M4OrbicalCanonDestroyed4.sfd', bank = 'N03_VO', cue = 'M4OrbicalCanonDestroyed4', faction = 'UEF'},
+-- All orbital cannon positions destroyed
+M4OrbicalCannonDestroyed4 = {
+    {text = '[Nichols]: That\'s all of them, good job sir.', vid = 'N03_M4OrbicalCannonDestroyed4.sfd', bank = 'N03_VO', cue = 'M4OrbicalCannonDestroyed4', faction = 'UEF'},
 }
 
--- Reminder 1 to destroy the canons
-M4OrbitalCanonsReminder1 = {
-    {text = '[Nichols]: Sir, the Orbital Canons are blocking us from escaping the planet, destroy them as soon as possible.', vid = 'N03_M4M4OrbitalCanonsReminder1.sfd', bank = 'N03_VO', cue = 'M4M4OrbitalCanonsReminder1', faction = 'UEF'},
+-- Reminder 1 to destroy the cannons
+M4OrbitalcannonsReminder1 = {
+    {text = '[Nichols]: Sir, the orbital cannons are blocking us from escaping the planet, destroy them as soon as possible.', vid = 'N03_M4M4OrbitalCannonsReminder1.sfd', bank = 'N03_VO', cue = 'M4M4OrbitalCannonsReminder1', faction = 'UEF'},
 }
 
--- Reminder 2 to destroy the canons
-M4OrbitalCanonsReminder2 = {
-    {text = '[Nichols]: Sir, destroy the Orbital Canons so we can leave this planet.', vid = 'N03_M4M4OrbitalCanonsReminder2.sfd', bank = 'N03_VO', cue = 'M4M4OrbitalCanonsReminder2', faction = 'UEF'},
+-- Reminder 2 to destroy the cannons
+M4OrbitalCannonsReminder2 = {
+    {text = '[Nichols]: Sir, destroy the orbital cannons so we can leave this planet.', vid = 'N03_M4M4OrbitalCannonsReminder2.sfd', bank = 'N03_VO', cue = 'M4M4OrbitalCannonsReminder2', faction = 'UEF'},
 }
 
 
 
 -- Assign Secondary objective to kill the tempest, spotted unfinished
 M4TempestSpottedUnfinished = {
-    {text = '[Nichols]: Sir, the Aeon commander is building some very large unit in the north east base. By the size it looks like it can deal huge amount of damage. Destroy it as soon as you can.', vid = 'N03_M4TempestSpottedUnfinished.sfd', bank = 'N03_VO', cue = 'M4TempestSpottedUnfinished', faction = 'UEF'},
+    {text = '[Nichols]: Sir, the Aeon commander is building a very large unit in the north east base. By the size it looks like it can deal huge amounts of damage. Destroy it as soon as you can.', vid = 'N03_M4TempestSpottedUnfinished.sfd', bank = 'N03_VO', cue = 'M4TempestSpottedUnfinished', faction = 'UEF'},
 }
 
 -- Assign Secondary objective to kill the tempest, the tempest is finished already
@@ -686,14 +689,14 @@ M4TechUnlock2 = {
 
 -- Field Engie Unlocked
 M4FieldEngieUnlock = {
-    {text = '[Benson]: Field engie (has TMD) blueprint.', vid = 'N03_M4FieldEngieUnlock.sfd', bank = 'N03_VO', cue = 'M4FieldEngieUnlock', faction = 'UEF'},
+    {text = '[Benson]: The field engineer blueprint is now available. It can constuct tactical missile defences and is equipped with a light version of it as well.', vid = 'N03_M4FieldEngieUnlock.sfd', bank = 'N03_VO', cue = 'M4FieldEngieUnlock', faction = 'UEF'},
 }
 
 
 
 -- Primary Objective
-M4P1Title = 'Destroy All Orbital Canons'
-M4P1Description = 'Locate and destroy all Aeon Orbital Canons that are blocking us from escaping the planet.'
+M4P1Title = 'Destroy All Orbital Cannons'
+M4P1Description = 'Locate and destroy all Aeon orbital cannons that are blocking us from escaping the planet.'
 
 -- Secondary Objective
 M4S1Title = 'Destroy Aeon Experimental Unit'
@@ -709,32 +712,33 @@ M4B1Description = 'You\'ve destroyed the Tempest before it was completed.'
 ---------
 -- Taunts
 ---------
+
+-- Aeon taunt
+TAUNT1 = {
+    {text = '[Aeon]: I will cleanse you.', vid = 'N03_TAUNT1.sfd', bank = 'N03_VO', cue = 'TAUNT1', faction = 'Aeon'},
+}
+
+-- Aeon taunt
+TAUNT2 = {
+    {text = '[Aeon]: In the name of the princess, you will be destroyed!', vid = 'N03_TAUNT2.sfd', bank = 'N03_VO', cue = 'TAUNT2', faction = 'Aeon'},
+}
+
+-- Aeon taunt
+TAUNT3 = {
+    {text = '[Aeon]: Your pathetic spaceship wont help you... my orbital cannons will blow it out of the orbit.', vid = 'N03_TAUNT3.sfd', bank = 'N03_VO', cue = 'TAUNT3', faction = 'Aeon'},
+    {text = '[Nichols]: Sir, the Aeon started active radar scans of the upper atmosphere. Destroy him before he can track the ship!', vid = 'N03_TAUNT3_2.sfd', bank = 'N03_VO', cue = 'TAUNT3_2', faction = 'UEF'},
+}
+
+-- Aeon taunt
+TAUNT4 = {
+    {text = '[Aeon]: Surrender now, the way will prevail anyway.', vid = 'N03_TAUNT4.sfd', bank = 'N03_VO', cue = 'TAUNT4', faction = 'Aeon'},
+}
+
+-- Aeon taunt
+TAUNT5 = {
+    {text = '[Aeon]: You will be crushed by the forces of the Aeon Illuminate.', vid = 'N03_TAUNT5.sfd', bank = 'N03_VO', cue = 'TAUNT5', faction = 'Aeon'},
+}
 --[[
--- Aeon taunt
-TAUNT = {
-    {text = '[Aeon]: Much taunt here.', vid = 'N03_TAUNT.sfd', bank = 'N03_VO', cue = 'TAUNT', faction = 'Aeon'},
-}
-
--- Aeon taunt
-TAUNT = {
-    {text = '[Aeon]: Much taunt here.', vid = 'N03_TAUNT.sfd', bank = 'N03_VO', cue = 'TAUNT', faction = 'Aeon'},
-}
-
--- Aeon taunt
-TAUNT = {
-    {text = '[Aeon]: Much taunt here.', vid = 'N03_TAUNT.sfd', bank = 'N03_VO', cue = 'TAUNT', faction = 'Aeon'},
-}
-
--- Aeon taunt
-TAUNT = {
-    {text = '[Aeon]: Much taunt here.', vid = 'N03_TAUNT.sfd', bank = 'N03_VO', cue = 'TAUNT', faction = 'Aeon'},
-}
-
--- Aeon taunt
-TAUNT = {
-    {text = '[Aeon]: Much taunt here.', vid = 'N03_TAUNT.sfd', bank = 'N03_VO', cue = 'TAUNT', faction = 'Aeon'},
-}
-
 -- Aeon taunt
 TAUNT = {
     {text = '[Aeon]: Much taunt here.', vid = 'N03_TAUNT.sfd', bank = 'N03_VO', cue = 'TAUNT', faction = 'Aeon'},
