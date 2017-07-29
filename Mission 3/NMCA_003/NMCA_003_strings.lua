@@ -340,7 +340,7 @@ M1MapExpansion = {
 
 -- Primary Objective
 M1P1Title = 'Protect the crashed ship'
-M1P1Description = 'Ensure that the crashed ship survives. The aeon forces will try to take it out.'
+M1P1Description = 'Ensure that the crashed ship survives. The hostile forces will try to take it out.'
 
 -- Primary Objective
 M1P2Title = 'Destroy the southern hostile base'
@@ -404,8 +404,8 @@ ThirdCrystalReclaimed = {
 
 -- Fourth crystal is reclaimed, arty satellite
 FourthCrystalReclaimed = {
-    {text = '[Nichols]: Fourth crystal reclaimed, the ballistic computers and target relays of the ship are coming online again. It can now control an orbital support statellite.', vid = 'N03_FourthCrystalReclaimed.sfd', bank = 'N03_VO', cue = 'FourthCrystalReclaimed', faction = 'UEF'},
-    {text = '[Nichols]: The satellite is equipped with long range weapons. Pinpoint a target to launch an orbital strike.', vid = 'N03_FourthCrystalReclaimed2.sfd', bank = 'N03_VO', cue = 'FourthCrystalReclaimed2', faction = 'UEF'},    
+    {text = '[Nichols]: Fourth crystal reclaimed, the ballistic computers and target relays of the ship are coming online again. It can now control an orbital support statellite.', vid = 'N03_FourthCrystalReclaimed_1.sfd', bank = 'N03_VO', cue = 'FourthCrystalReclaimed_1', faction = 'UEF'},
+    {text = '[Nichols]: The satellite is equipped with long range weapons. Pinpoint a target to launch an orbital strike.', vid = 'N03_FourthCrystalReclaimed_2.sfd', bank = 'N03_VO', cue = 'FourthCrystalReclaimed_2', faction = 'UEF'},    
 }
 
 -- All 5 crystals reclaimed, objective completed (map didnt expand yet)
@@ -526,7 +526,7 @@ M3PostIntro = {
 
 -- All attacking units dead
 M3CounterAttackDefeated = {
-    {text = '[Nichols]: Enemy forces defeated. Proceed with collecting the crystals.', vid = 'N03_M3CounterAttackDefeated.sfd', bank = 'N03_VO', cue = 'M3CounterAttackDefeated', faction = 'UEF'},
+    {text = '[Nichols]: Enemy forces defeated. Proceed with the mission.', vid = 'N03_M3CounterAttackDefeated.sfd', bank = 'N03_VO', cue = 'M3CounterAttackDefeated', faction = 'UEF'},
 }
 
 
