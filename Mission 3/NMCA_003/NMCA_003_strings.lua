@@ -725,7 +725,7 @@ TAUNT2 = {
 
 -- Aeon taunt
 TAUNT3 = {
-    {text = '[Aeon]: Your pathetic spaceship wont help you... my orbital cannons will blow it out of the orbit.', vid = 'N03_TAUNT3.sfd', bank = 'N03_VO', cue = 'TAUNT3', faction = 'Aeon'},
+    {text = '[Aeon]: Your pathetic spaceship wont help you... my orbital cannons will blow it out of the orbit.', vid = 'N03_TAUNT3_1.sfd', bank = 'N03_VO', cue = 'TAUNT3_1', faction = 'Aeon'},
     {text = '[Nichols]: Sir, the Aeon started active radar scans of the upper atmosphere. Destroy him before he can track the ship!', vid = 'N03_TAUNT3_2.sfd', bank = 'N03_VO', cue = 'TAUNT3_2', faction = 'UEF'},
 }
 
