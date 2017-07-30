@@ -595,17 +595,17 @@ M4DestroyCannons = {
 
 -- First orbital cannon position destroyed
 M4OrbicalCannonDestroyed1 = {
-    {text = '[Nichols]: First orbital cannon destroyed.', vid = 'N03_M4OrbicalCannonDestroyed1.sfd', bank = 'N03_VO', cue = 'M4OrbicalCannonDestroyed1', faction = 'UEF'},
+    {text = '[Nichols]: First orbital cannon emplacement destroyed.', vid = 'N03_M4OrbicalCannonDestroyed1.sfd', bank = 'N03_VO', cue = 'M4OrbicalCannonDestroyed1', faction = 'UEF'},
 }
 
 -- Second orbital cannon position destroyed
 M4OrbicalCannonDestroyed2 = {
-    {text = '[Nichols]: Another orbital cannon has been destroyed, keep up the good work sir.', vid = 'N03_M4OrbicalCannonDestroyed2.sfd', bank = 'N03_VO', cue = 'M4OrbicalCannonDestroyed2', faction = 'UEF'},
+    {text = '[Nichols]: Another orbital cannon battery has been destroyed, keep up the good work sir.', vid = 'N03_M4OrbicalCannonDestroyed2.sfd', bank = 'N03_VO', cue = 'M4OrbicalCannonDestroyed2', faction = 'UEF'},
 }
 
 -- Third orbital cannon position destroyed
 M4OrbicalCannonDestroyed3 = {
-    {text = '[Nichols]: Third orbital cannon is down, just one more to go.', vid = 'N03_M4OrbicalCannonDestroyed3.sfd', bank = 'N03_VO', cue = 'M4OrbicalCannonDestroyed3', faction = 'UEF'},
+    {text = '[Nichols]: Third orbital cannon emplacement is down, just one more to go.', vid = 'N03_M4OrbicalCannonDestroyed3.sfd', bank = 'N03_VO', cue = 'M4OrbicalCannonDestroyed3', faction = 'UEF'},
 }
 
 -- All orbital cannon positions destroyed
