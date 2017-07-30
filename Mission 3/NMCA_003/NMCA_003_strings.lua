@@ -404,8 +404,8 @@ ThirdCrystalReclaimed = {
 
 -- Fourth crystal is reclaimed, arty satellite
 FourthCrystalReclaimed = {
-    {text = '[Nichols]: Fourth crystal reclaimed, the ballistic computers and target relays of the ship are coming online again. It can now control an orbital support statellite.', vid = 'N03_FourthCrystalReclaimed_1.sfd', bank = 'N03_VO', cue = 'FourthCrystalReclaimed_1', faction = 'UEF'},
-    {text = '[Nichols]: The satellite is equipped with long range weapons. Pinpoint a target to launch an orbital strike.', vid = 'N03_FourthCrystalReclaimed_2.sfd', bank = 'N03_VO', cue = 'FourthCrystalReclaimed_2', faction = 'UEF'},    
+    {text = '[Benson]: Fourth crystal reclaimed, the ballistic computers and target relays of the ship are coming online again. It can now control an orbital support statellite.', vid = 'N03_FourthCrystalReclaimed_1.sfd', bank = 'N03_VO', cue = 'FourthCrystalReclaimed_1', faction = 'UEF'},
+    {text = '[Benson]: The satellite is equipped with long range weapons. Pinpoint a target to launch an orbital strike.', vid = 'N03_FourthCrystalReclaimed_2.sfd', bank = 'N03_VO', cue = 'FourthCrystalReclaimed_2', faction = 'UEF'},    
 }
 
 -- All 5 crystals reclaimed, objective completed (map didnt expand yet)
@@ -443,14 +443,14 @@ M2RailBoatUnlock = {
 
 -- Unlock T2 Arty
 M2T2ArtyUnlock = {
-    {text = '[Benson]: You can use T2 Static Artillery to defend your shores agaisnt enemy Destroyers, we\'re uploading the blueprint into your ACU right now.', vid = 'N03_M2T2ArtyUnlock.sfd', bank = 'N03_VO', cue = 'M2T2ArtyUnlock', faction = 'UEF'},
+    {text = '[Benson]: You can use T2 Static Artillery to defend your shores against enemy Destroyers, we\'re uploading the blueprint into your ACU right now.', vid = 'N03_M2T2ArtyUnlock.sfd', bank = 'N03_VO', cue = 'M2T2ArtyUnlock', faction = 'UEF'},
 }
 
 
 
 -- Dialogue after 6 min
 M2Dialogue = {
-    {text = '[Benson]: We\'re detecting increasing enemy activity, we don\'t know what they are up to but you better hurry up.', vid = 'N03_M2Dialogue.sfd', bank = 'N03_VO', cue = 'M2Dialogue', faction = 'UEF'},
+    {text = '[Benson]: We\'re detecting increasing enemy activity, we don\'t know what they are up to but you better hurry.', vid = 'N03_M2Dialogue.sfd', bank = 'N03_VO', cue = 'M2Dialogue', faction = 'UEF'},
 }
 
 -- Before the enemy ACU is shown
@@ -512,14 +512,10 @@ M3Intro1 = {
     {text = '[Nichols]: Sir! There is high activity coming from the north. Significant forces are approaching.', vid = 'N03_M3Intro1.sfd', bank = 'N03_VO', cue = 'M3Intro1', faction = 'UEF'},
 }
 
--- 
 M3Intro2 = {
     {text = '[Nichols]: Defend your position and keep the ship alive!', vid = 'N03_M3Intro2.sfd', bank = 'N03_VO', cue = 'M3Intro2', faction = 'UEF'},  --TODO improve the text
 }
 
-
-
--- All attacking units dead
 M3PostIntro = {
     {text = '[Nichols]: Defeat the incoming units and protect the ship, commander.', vid = 'N03_M3PostIntro.sfd', bank = 'N03_VO', cue = 'M3PostIntro', faction = 'UEF'},
 }
@@ -599,17 +595,17 @@ M4DestroyCannons = {
 
 -- First orbital cannon position destroyed
 M4OrbicalCannonDestroyed1 = {
-    {text = '[Nichols]: First orbital cannon position destroyed.', vid = 'N03_M4OrbicalCannonDestroyed1.sfd', bank = 'N03_VO', cue = 'M4OrbicalCannonDestroyed1', faction = 'UEF'},
+    {text = '[Nichols]: First orbital cannon destroyed.', vid = 'N03_M4OrbicalCannonDestroyed1.sfd', bank = 'N03_VO', cue = 'M4OrbicalCannonDestroyed1', faction = 'UEF'},
 }
 
 -- Second orbital cannon position destroyed
 M4OrbicalCannonDestroyed2 = {
-    {text = '[Nichols]: Another orbital cannon position has been destroyed, keep up the good work sir.', vid = 'N03_M4OrbicalCannonDestroyed2.sfd', bank = 'N03_VO', cue = 'M4OrbicalCannonDestroyed2', faction = 'UEF'},
+    {text = '[Nichols]: Another orbital cannon has been destroyed, keep up the good work sir.', vid = 'N03_M4OrbicalCannonDestroyed2.sfd', bank = 'N03_VO', cue = 'M4OrbicalCannonDestroyed2', faction = 'UEF'},
 }
 
 -- Third orbital cannon position destroyed
 M4OrbicalCannonDestroyed3 = {
-    {text = '[Nichols]: Third orbital cannon position is down, just one more to go.', vid = 'N03_M4OrbicalCannonDestroyed3.sfd', bank = 'N03_VO', cue = 'M4OrbicalCannonDestroyed3', faction = 'UEF'},
+    {text = '[Nichols]: Third orbital cannon is down, just one more to go.', vid = 'N03_M4OrbicalCannonDestroyed3.sfd', bank = 'N03_VO', cue = 'M4OrbicalCannonDestroyed3', faction = 'UEF'},
 }
 
 -- All orbital cannon positions destroyed
@@ -679,12 +675,13 @@ M4Tempest100PercentDone = {
 
 -- TML/TMD Unlocked, warning about enemy TMLs
 M4TechUnlock1 = {
-    {text = '[Benson]: Uploading blueprint for TML/TMD. We\'re detecting enemy missile launchers in the area, be carefull.', vid = 'N03_M4TechUnlock1.sfd', bank = 'N03_VO', cue = 'M4TechUnlock1', faction = 'UEF'},
+    {text = '[Benson]: We\'re detecting enemy missile launchers in the area, get some missile defences online commander!', vid = 'N03_M4TechUnlock1.sfd', bank = 'N03_VO', cue = 'M4TechUnlock1', faction = 'UEF'},
 }
 
 -- TML/TMD Unlocked, without warning
 M4TechUnlock2 = {
-    {text = '[Benson]: Uploading blueprint for TML/TMD.', vid = 'N03_M4TechUnlock2.sfd', bank = 'N03_VO', cue = 'M4TechUnlock2', faction = 'UEF'},
+    {text = '[Nichols]: The enemy base seems to be vulnerable to mid range cruise missiles.', vid = 'N03_M4TechUnlock2_1.sfd', bank = 'N03_VO', cue = 'M4TechUnlock2_1', faction = 'UEF'},
+    {text = '[Benson]: The Bowcaster can launch missiles with the required range in short succession. It is now available.', vid = 'N03_M4TechUnlock2_2.sfd', bank = 'N03_VO', cue = 'M4TechUnlock2_2', faction = 'UEF'},
 }
 
 -- Field Engie Unlocked
