@@ -728,24 +728,24 @@ TAUNT3 = {
 
 -- Aeon taunt
 TAUNT4 = {
-    {text = '[Aeon]: Surrender now, the way will prevail anyway.', vid = 'N03_TAUNT4.sfd', bank = 'N03_VO', cue = 'TAUNT4', faction = 'Aeon'},
+    {text = '[Aeon]: Surrender now, the way will prevail despite of your efforts.', vid = 'N03_TAUNT4.sfd', bank = 'N03_VO', cue = 'TAUNT4', faction = 'Aeon'},
 }
 
 -- Aeon taunt
 TAUNT5 = {
     {text = '[Aeon]: You will be crushed by the forces of the Aeon Illuminate.', vid = 'N03_TAUNT5.sfd', bank = 'N03_VO', cue = 'TAUNT5', faction = 'Aeon'},
 }
+
+-- Aeon taunt
+TAUNT6 = {
+    {text = '[Aeon]: Your futile attempts to resist the truth wont help you much longer.', vid = 'N03_TAUNT6.sfd', bank = 'N03_VO', cue = 'TAUNT6', faction = 'Aeon'},
+}
+
+-- Aeon taunt
+TAUNT7 = {
+    {text = '[Aeon]: I figured that we had to hunt you down through the galaxy, but you will die here and now.', vid = 'N03_TAUNT7.sfd', bank = 'N03_VO', cue = 'TAUNT7', faction = 'Aeon'},
+}
 --[[
--- Aeon taunt
-TAUNT = {
-    {text = '[Aeon]: Much taunt here.', vid = 'N03_TAUNT.sfd', bank = 'N03_VO', cue = 'TAUNT', faction = 'Aeon'},
-}
-
--- Aeon taunt
-TAUNT = {
-    {text = '[Aeon]: Much taunt here.', vid = 'N03_TAUNT.sfd', bank = 'N03_VO', cue = 'TAUNT', faction = 'Aeon'},
-}
-
 -- Aeon taunt
 TAUNT = {
     {text = '[Aeon]: Much taunt here.', vid = 'N03_TAUNT.sfd', bank = 'N03_VO', cue = 'TAUNT', faction = 'Aeon'},
